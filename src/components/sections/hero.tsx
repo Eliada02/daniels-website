@@ -17,7 +17,7 @@ export function Hero() {
     <section
       id="hero"
       data-screen-label="Hero"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-x-hidden bg-forest pt-20 pb-28 text-cream sm:pt-24 sm:pb-32 lg:pt-28 lg:pb-36"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-forest pt-20 pb-24 text-cream sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
     >
       <canvas data-particles="hero" className="absolute inset-0 z-[1] h-full w-full" />
 
@@ -43,7 +43,7 @@ export function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-8 px-5 py-6 sm:gap-10 sm:px-10 sm:py-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-16 lg:py-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-16">
         {/* headline — first on mobile, right column on desktop */}
         <div className="relative order-1 lg:order-2">
           <span
