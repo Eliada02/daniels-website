@@ -30,7 +30,7 @@ export function Cta() {
         />
       </svg>
 
-      <div className="relative z-[4] mx-auto grid w-full max-w-[1240px] grid-cols-1 items-center gap-8 px-5 pb-8 sm:gap-10 sm:px-10 md:pb-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-[60px] lg:px-16">
+      <div className="relative z-[4] mx-auto grid w-full max-w-[1240px] grid-cols-1 items-center gap-8 px-5 pb-8 sm:gap-10 sm:px-10 md:pb-32 lg:grid-cols-[0.95fr_1.05fr] lg:gap-[60px] lg:px-16">
         <div>
           <span
             data-reveal

@@ -16,7 +16,7 @@ function StepRow({ step }: { step: Step }) {
       }`}
     >
       <span className="font-mono text-[13px] text-olive">{step.kicker}</span>
-      <h3 className="mt-1.5 font-serif text-[26px] font-semibold sm:text-[30px]">
+      <h3 className="mt-1.5 font-serif text-[clamp(20px,5vw,30px)] font-semibold">
         {step.title}
       </h3>
       <p className="mt-2 text-[15px] leading-[1.6] text-forest/[0.66]">
@@ -27,7 +27,7 @@ function StepRow({ step }: { step: Step }) {
 
   const marker = (
     <span
-      className={`flex h-[54px] w-[54px] shrink-0 items-center justify-center rounded-full font-serif text-[22px] font-bold shadow-[0_0_0_8px_#F9FAF5] ${markerTone[step.tone]}`}
+      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-serif text-xl font-bold shadow-[0_0_0_4px_#F9FAF5] sm:h-[54px] sm:w-[54px] sm:text-[22px] sm:shadow-[0_0_0_8px_#F9FAF5] ${markerTone[step.tone]}`}
     >
       {step.n}
     </span>
@@ -36,7 +36,7 @@ function StepRow({ step }: { step: Step }) {
   return (
     <div
       data-reveal
-      className="relative grid grid-cols-[54px_1fr] items-center gap-x-5 py-7 md:grid-cols-[1fr_80px_1fr] md:gap-x-0 md:py-[30px]"
+      className="relative grid grid-cols-[48px_1fr] items-start gap-x-3 py-7 sm:grid-cols-[54px_1fr] sm:items-center sm:gap-x-5 md:grid-cols-[1fr_80px_1fr] md:gap-x-0 md:py-[30px]"
     >
       {/* marker: left column on mobile, centre column on desktop */}
       <div className="col-start-1 flex justify-center md:col-start-2">
@@ -81,10 +81,10 @@ export function Method() {
 
         <div data-timeline className="relative flex flex-col">
           {/* connector + animated fill — left rail on mobile, centre on desktop */}
-          <div className="absolute bottom-0 left-[27px] top-0 w-0.5 -translate-x-1/2 bg-forest/10 md:left-1/2" />
+          <div className="absolute bottom-0 left-[24px] top-0 w-0.5 -translate-x-1/2 bg-forest/10 sm:left-[27px] md:left-1/2" />
           <div
             data-time-fill
-            className="absolute left-[27px] top-0 h-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-olive to-forest md:left-1/2"
+            className="absolute left-[24px] top-0 h-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-olive to-forest sm:left-[27px] md:left-1/2"
           />
           {steps.map((step) => (
             <StepRow key={step.n} step={step} />

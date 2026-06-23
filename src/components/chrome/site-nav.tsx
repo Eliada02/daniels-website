@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cssVars } from "@/lib/css";
 import { siteConfig } from "@/lib/site-config";
 
 /**
@@ -21,9 +22,21 @@ export function SiteNav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <nav className="fixed inset-x-0 top-0 z-[160] border-b border-transparent bg-forest pt-[env(safe-area-inset-top)] text-cream transition-[background-color,color,box-shadow,border-color] duration-300">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-10 sm:py-3.5">
+    <nav
+      data-menu-open={open || undefined}
+      className="fixed inset-x-0 top-0 z-[160] border-b border-transparent bg-forest pt-[env(safe-area-inset-top)] text-cream transition-[background-color,color,box-shadow,border-color,backdrop-filter] duration-300"
+    >
+      <div className="relative z-[2] mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-10 sm:py-3.5">
         {/* logo + monogram */}
         <a
           href="#hero"
@@ -70,47 +83,83 @@ export function SiteNav() {
           type="button"
           aria-label={open ? "Chiudi menu" : "Apri menu"}
           aria-expanded={open}
+          aria-controls="mobile-nav-panel"
           onClick={() => setOpen((v) => !v)}
-          className="relative h-10 w-10 text-current md:hidden"
+          className={`relative grid h-11 w-11 place-items-center rounded-full transition-all duration-300 ease-out md:hidden ${
+            open ? "bg-current/[0.08] ring-1 ring-current/15" : "bg-transparent"
+          }`}
         >
           <span
-            className={`absolute left-1/2 top-1/2 h-px w-5 -translate-x-1/2 bg-current transition-all duration-300 ${
-              open ? "rotate-45" : "-translate-y-[5px]"
+            className={`absolute left-1/2 h-[1.5px] w-[22px] -translate-x-1/2 rounded-full bg-current transition-all duration-300 ease-out ${
+              open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[calc(50%-5px)]"
             }`}
           />
           <span
-            className={`absolute left-1/2 top-1/2 h-px w-5 -translate-x-1/2 bg-current transition-all duration-300 ${
-              open ? "-rotate-45" : "translate-y-[5px]"
+            className={`absolute left-1/2 h-[1.5px] w-[22px] -translate-x-1/2 rounded-full bg-current transition-all duration-300 ease-out ${
+              open ? "top-1/2 -translate-y-1/2 opacity-0" : "top-1/2 -translate-y-1/2"
+            }`}
+          />
+          <span
+            className={`absolute left-1/2 h-[1.5px] w-[22px] -translate-x-1/2 rounded-full bg-current transition-all duration-300 ease-out ${
+              open ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-[calc(50%+5px)]"
             }`}
           />
         </button>
       </div>
 
+      {/* mobile backdrop */}
+      <button
+        type="button"
+        aria-label="Chiudi menu"
+        tabIndex={open ? 0 : -1}
+        onClick={() => setOpen(false)}
+        className={`dg-nav-mobile-backdrop fixed inset-0 top-0 z-[1] bg-forest/55 backdrop-blur-[6px] transition-[opacity,visibility] duration-500 ease-out md:hidden ${
+          open ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
+        }`}
+      />
+
       {/* mobile panel */}
       <div
+        id="mobile-nav-panel"
         data-nav-panel
-        className={`absolute inset-x-0 top-full origin-top overflow-hidden border-b transition-[max-height,opacity,background-color,color,border-color] duration-300 ease-out md:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        data-open={open || undefined}
+        className="dg-nav-mobile-panel relative z-[2] md:hidden"
       >
-        <div className="flex flex-col gap-1 px-5 py-4 sm:px-6">
-          {siteConfig.nav.map((item) => (
+        <div className="dg-nav-mobile-panel-inner overflow-hidden">
+          <div className="border-t border-current/[0.08] px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 sm:px-6">
+            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] opacity-50">
+              Navigazione
+            </p>
+            <div className="flex flex-col gap-1">
+              {siteConfig.nav.map((item, i) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  style={cssVars({ "--nav-i": i })}
+                  className="dg-nav-mobile-link group flex items-center gap-4 rounded-xl px-3 py-3.5 no-underline transition-colors active:bg-current/[0.06]"
+                >
+                  <span className="font-mono text-[11px] tracking-[0.16em] opacity-40">
+                    0{i + 1}
+                  </span>
+                  <span className="font-serif text-[clamp(20px,5.5vw,24px)] font-semibold leading-none tracking-[-0.01em]">
+                    {item.label}
+                  </span>
+                  <span className="ml-auto translate-x-1 text-sm opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-50">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
             <a
-              key={item.href}
-              href={item.href}
+              href="#cta"
               onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-3 text-[15px] font-semibold no-underline opacity-90 transition-colors hover:bg-sage/10 hover:opacity-100"
+              className="dg-nav-mobile-link mt-4 flex w-full items-center justify-center rounded-full bg-sage px-5 py-3.5 text-center text-[14px] font-bold tracking-[0.02em] text-forest no-underline shadow-[0_8px_24px_rgba(217,233,170,0.22)] transition-transform duration-300 active:scale-[0.98]"
+              style={cssVars({ "--nav-i": siteConfig.nav.length })}
             >
-              {item.label}
+              Parliamone
             </a>
-          ))}
-          <a
-            href="#cta"
-            onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-sage px-5 py-3 text-center text-[14px] font-bold text-forest no-underline"
-          >
-            Parliamone
-          </a>
+          </div>
         </div>
       </div>
     </nav>

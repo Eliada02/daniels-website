@@ -11,7 +11,7 @@ function Card({ t, delay, px }: { t: Testimonial; delay: number; px: string }) {
         "--tilt-base": `rotate(${t.rotate})`,
         "--reveal-delay": `${delay}s`,
       })}
-      className={`relative rounded-[10px] p-6 sm:p-9 mt-0 ${t.offset.replace(/^mt-/, "md:mt-")} ${
+      className={`relative rounded-[10px] p-6 pt-8 sm:p-9 sm:pt-9 mt-0 ${t.offset.replace(/^mt-/, "md:mt-")} ${
         dark
           ? "bg-forest text-cream shadow-[0_22px_60px_rgba(8,56,51,0.2)]"
           : "border border-forest/[0.08] bg-white shadow-[0_18px_50px_rgba(8,56,51,0.07)]"
@@ -19,14 +19,14 @@ function Card({ t, delay, px }: { t: Testimonial; delay: number; px: string }) {
     >
       <span
         data-px={px}
-        className={`absolute -top-[16px] left-[18px] font-serif text-[56px] leading-none sm:-top-[22px] sm:left-[22px] sm:text-[80px] ${
+        className={`pointer-events-none absolute top-1 left-4 font-serif text-[40px] leading-none sm:left-[22px] sm:-top-[22px] sm:text-[80px] ${
           dark ? "text-sage/50" : "text-sage"
         }`}
       >
         &ldquo;
       </span>
       <blockquote
-        className={`mt-3 font-serif text-[clamp(18px,4.5vw,22px)] font-medium leading-[1.35] ${
+        className={`relative z-[1] pt-5 pl-1 font-serif text-[clamp(18px,4.5vw,22px)] font-medium leading-[1.35] sm:pt-3 sm:pl-0 ${
           dark ? "text-sage" : ""
         }`}
       >
@@ -70,7 +70,7 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-[26px] md:grid-cols-3">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-3 md:gap-[26px]">
           {testimonials.map((t, i) => (
             <Card key={t.author} t={t} delay={i * 0.1} px={px[i]} />
           ))}

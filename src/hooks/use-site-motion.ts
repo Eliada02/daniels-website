@@ -277,29 +277,36 @@ export function useSiteMotion(
       const navProbe = navRect ? navRect.top + navRect.height / 2 : 28;
       const activeSection = sectionUnderNav(navProbe);
       const navTheme = NAV_THEME[activeSection];
-      const heroImmersive = activeSection === "hero" && sy < 48;
+      const menuOpen = nav?.hasAttribute("data-menu-open");
+      const heroImmersive =
+        activeSection === "hero" && sy < 48 && !menuOpen;
 
       [navLogo, navLinks].forEach((n) => {
         if (n) n.style.color = navTheme.ink;
       });
       if (nav) {
-        // Inherit ink on toggle + mobile links; solid bar matches each section.
         nav.style.color = navTheme.ink;
         if (heroImmersive) {
           nav.style.background = "transparent";
           nav.style.borderBottom = "1px solid transparent";
           nav.style.boxShadow = "none";
+          nav.style.backdropFilter = "none";
         } else {
           nav.style.background = navTheme.bg;
           nav.style.borderBottom = `1px solid ${navTheme.border}`;
           nav.style.boxShadow = navTheme.shadow;
+          nav.style.backdropFilter = menuOpen
+            ? "saturate(140%) blur(14px)"
+            : "none";
         }
-        nav.style.backdropFilter = "none";
       }
       if (navPanel) {
         navPanel.style.background = navTheme.bg;
         navPanel.style.color = navTheme.ink;
         navPanel.style.borderBottomColor = navTheme.border;
+        navPanel.style.backdropFilter = menuOpen
+          ? "saturate(150%) blur(18px)"
+          : "none";
       }
 
       ticking = false;

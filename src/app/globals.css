@@ -228,6 +228,9 @@
     @apply bg-background text-foreground antialiased;
     overflow-x: hidden;
   }
+  section[id] {
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 4.75rem);
+  }
   ::selection {
     background: #d9e9aa;
     color: #083833;
@@ -321,6 +324,36 @@
     animation-duration: 1.55s !important;
   }
 
+  /* Mobile nav — smooth sheet + staggered links ----------------- */
+  @keyframes dgNavLinkIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .dg-nav-mobile-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .dg-nav-mobile-panel[data-open] {
+    grid-template-rows: 1fr;
+  }
+  .dg-nav-mobile-panel-inner {
+    min-height: 0;
+  }
+  .dg-nav-mobile-panel[data-open] .dg-nav-mobile-link {
+    animation: dgNavLinkIn 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(0.055s * var(--nav-i) + 0.08s);
+  }
+  .dg-nav-mobile-backdrop {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] {
       opacity: 1 !important;
@@ -345,13 +378,6 @@
     .dg-chest [data-anim="bill"] {
       opacity: 1 !important;
     }
-    .dg-loader [data-loader-bar],
-    .dg-loader-symbol {
-      animation: none !important;
-    }
-    .dg-loader [data-loader-bar] {
-      transform: scaleX(1);
-    }
     .dg-loader-grow-bar {
       animation: none !important;
       height: var(--h) !important;
@@ -371,6 +397,18 @@
       animation: none !important;
       opacity: 0;
       visibility: hidden;
+    }
+    .dg-nav-mobile-panel {
+      transition: none !important;
+    }
+    .dg-nav-mobile-panel[data-open] {
+      grid-template-rows: 1fr;
+    }
+    .dg-nav-mobile-panel[data-open] .dg-nav-mobile-link {
+      animation: none !important;
+    }
+    .dg-nav-mobile-backdrop {
+      transition: none !important;
     }
   }
 }

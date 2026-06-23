@@ -17,7 +17,7 @@ export function Hero() {
     <section
       id="hero"
       data-screen-label="Hero"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-forest pt-20 pb-24 text-cream sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
+      className="relative flex min-h-[100svh] flex-col justify-start overflow-hidden bg-forest pt-[calc(env(safe-area-inset-top)+4.75rem)] pb-24 text-cream sm:justify-center sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
     >
       <canvas data-particles="hero" className="absolute inset-0 z-[1] h-full w-full" />
 
@@ -43,9 +43,9 @@ export function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 px-5 sm:gap-10 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-16">
         {/* headline — first on mobile, right column on desktop */}
-        <div className="relative order-1 lg:order-2">
+        <div className="relative isolate z-10 order-1 lg:order-2">
           <span
             data-reveal
             className="mb-5 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.18em] text-sage sm:mb-6 sm:text-xs sm:tracking-[0.22em]"
@@ -97,10 +97,10 @@ export function Hero() {
         </div>
 
         {/* treasure chest — below headline on mobile */}
-        <div data-px="-0.18" className="relative order-2 mx-auto w-full max-w-[min(100%,300px)] sm:max-w-[360px] lg:order-1 lg:mx-0 lg:max-w-none">
+        <div data-px="-0.18" className="relative order-2 z-0 mx-auto mt-2 w-full max-w-[min(100%,280px)] sm:mt-0 sm:max-w-[360px] lg:order-1 lg:mx-0 lg:max-w-none">
           <div
             data-reveal
-            className="relative flex aspect-square w-full items-center justify-center overflow-visible rounded-md border border-sage/20 shadow-[0_40px_90px_rgba(0,0,0,0.4)] sm:aspect-[4/5]"
+            className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-md border border-sage/20 shadow-[0_40px_90px_rgba(0,0,0,0.4)] sm:aspect-[4/5] lg:overflow-visible"
             style={{
               background:
                 "radial-gradient(circle at 50% 38%, #0d4942 0%, #0a3833 45%, #061f1c 100%)",
@@ -117,7 +117,7 @@ export function Hero() {
                   "radial-gradient(circle at 50% 40%,#000,transparent 75%)",
               }}
             />
-            <div className="scale-[0.9] sm:scale-110 lg:scale-125">
+            <div className="scale-[0.82] sm:scale-110 lg:scale-125">
               <TreasureChest />
             </div>
             <span className="absolute bottom-[18px] left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.28em] text-sage/55">

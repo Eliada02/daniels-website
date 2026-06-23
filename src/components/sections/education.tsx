@@ -65,14 +65,14 @@ export function Education() {
           </p>
         </div>
 
-        <div className="gap-[22px] sm:columns-2 lg:columns-3">
+        <div className="gap-[22px] md:columns-2 lg:columns-3">
           {eduCards.map((card, i) => (
             <article
               key={card.title}
               data-reveal
               data-tilt
               style={reveal((i % 3) * 0.06)}
-              className={`mb-[22px] break-inside-avoid rounded-lg p-[30px] ${toneClass[card.tone]}`}
+              className={`mb-[22px] break-inside-avoid rounded-lg p-5 sm:p-[30px] ${toneClass[card.tone]}`}
             >
               <span
                 className={`font-mono text-[11px] tracking-[0.1em] ${kickerClass[card.tone]}`}
@@ -80,7 +80,7 @@ export function Education() {
                 {card.kicker}
               </span>
               <h3
-                className={`mt-3 font-serif text-[26px] font-semibold leading-[1.12] ${titleClass[card.tone]}`}
+                className={`mt-3 font-serif text-[clamp(20px,4.5vw,26px)] font-semibold leading-[1.12] ${titleClass[card.tone]}`}
               >
                 {card.title}
               </h3>

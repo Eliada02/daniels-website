@@ -82,13 +82,13 @@ export function SiteLoader() {
       />
 
       <div className="relative z-[1] flex w-full max-w-[min(92vw,400px)] flex-col items-center text-center">
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-sage">
+        <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.24em] text-sage">
           {loader.kicker}
         </p>
 
         <LoaderVisual />
 
-        <p className="mt-6 font-serif text-[clamp(26px,6.5vw,38px)] font-semibold leading-[1.05] tracking-[-0.02em]">
+        <p className="mt-8 font-serif text-[clamp(26px,6.5vw,38px)] font-semibold leading-[1.05] tracking-[-0.02em]">
           {loader.headline}{" "}
           <em className="italic text-sage">{loader.headlineEm}</em>
         </p>

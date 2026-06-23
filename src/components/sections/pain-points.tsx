@@ -80,24 +80,6 @@ export function PainPoints() {
       data-screen-label="Pain points"
       className="relative overflow-hidden bg-cream px-5 py-24 sm:px-10 lg:px-16 lg:py-[140px]"
     >
-      {/* heartbeat line */}
-      <svg
-        viewBox="0 0 1200 80"
-        preserveAspectRatio="none"
-        className="absolute inset-x-0 top-[90px] h-20 w-full opacity-50"
-      >
-        <path
-          data-heartbeat
-          d="M0 40 H300 l18 -26 l20 52 l16 -40 l14 14 H560 l18 -30 l22 60 l16 -46 l12 16 H900 l18 -26 l20 52 l16 -40 l14 14 H1200"
-          fill="none"
-          stroke="#50772F"
-          strokeWidth={2}
-          pathLength={1}
-          strokeDasharray={1}
-          strokeDashoffset={1}
-        />
-      </svg>
-
       <div className="relative z-[2] mx-auto max-w-[1240px]">
         <div className="mb-16 max-w-[720px]">
           <span
@@ -114,10 +96,30 @@ export function PainPoints() {
             <br />
             Eppure la liquidità non arriva mai.
           </h2>
+
+          {/* heartbeat — in document flow so it never overlaps copy */}
+          <svg
+            viewBox="0 0 1200 80"
+            preserveAspectRatio="none"
+            aria-hidden
+            className="pointer-events-none mt-7 h-9 w-full opacity-35 sm:mt-8 sm:h-12 sm:opacity-45"
+          >
+            <path
+              data-heartbeat
+              d="M0 40 H300 l18 -26 l20 52 l16 -40 l14 14 H560 l18 -30 l22 60 l16 -46 l12 16 H900 l18 -26 l20 52 l16 -40 l14 14 H1200"
+              fill="none"
+              stroke="#50772F"
+              strokeWidth={2}
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1}
+            />
+          </svg>
+
           <p
             data-reveal
             style={reveal(0.1)}
-            className="mt-[22px] text-lg leading-[1.65] text-forest/70"
+            className="mt-7 text-lg leading-[1.65] text-forest/70 sm:mt-8"
           >
             Le fatture verso la Pubblica Amministrazione richiedono{" "}
             <strong
@@ -156,7 +158,7 @@ export function PainPoints() {
                 problema strutturale — e va risolto con una struttura.
               </p>
             </div>
-            <span className="self-end font-serif text-[48px] font-bold leading-none text-forest/[0.18] sm:self-auto sm:text-[64px]">
+            <span className="hidden self-end font-serif text-[64px] font-bold leading-none text-forest/[0.18] sm:inline">
               € →
             </span>
           </article>

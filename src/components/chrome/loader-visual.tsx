@@ -9,7 +9,7 @@ export function LoaderVisual() {
   return (
     <div className="flex w-full max-w-[min(92vw,400px)] flex-col items-center">
       <div
-        className="dg-loader-chest relative flex h-[148px] w-full items-end justify-center overflow-visible sm:h-[162px]"
+        className="dg-loader-chest relative flex h-[168px] w-full items-end justify-center overflow-hidden pt-2 sm:h-[178px]"
         aria-hidden
       >
         <div className="origin-bottom scale-[0.48] sm:scale-[0.54]">
@@ -17,7 +17,7 @@ export function LoaderVisual() {
         </div>
       </div>
 
-      <div className="dg-loader-chart mt-1 w-full max-w-[248px] rounded-lg border border-cream/[0.14] bg-forest/50 p-4 backdrop-blur-sm">
+      <div className="dg-loader-chart mt-3 w-full max-w-[248px] rounded-lg border border-cream/[0.14] bg-forest/50 p-4 backdrop-blur-sm">
         <div className="flex h-[76px] items-end gap-2.5">
           {chartBars.map((bar, i) => (
             <div

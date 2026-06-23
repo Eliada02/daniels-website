@@ -14,11 +14,7 @@ export function Solution() {
     <section
       id="soluzione"
       data-screen-label="Solution"
-      className="relative overflow-hidden bg-forest px-5 pb-24 pt-24 text-cream sm:px-10 sm:pt-28 lg:px-16 lg:pb-[150px] lg:pt-40"
-      style={{
-        clipPath: "polygon(0 4vw,100% 0,100% 100%,0 100%)",
-        marginTop: "-2vw",
-      }}
+      className="relative overflow-hidden bg-forest px-5 pb-24 pt-28 text-cream sm:px-10 sm:pt-28 md:[clip-path:polygon(0_4vw,100%_0,100%_100%,0_100%)] md:-mt-[2vw] lg:px-16 lg:pb-[150px] lg:pt-40"
     >
       <canvas
         data-particles="soln"
@@ -89,10 +85,10 @@ export function Solution() {
         </div>
 
         {/* growing chart */}
-        <div data-reveal style={reveal(0.15)} className="relative">
+        <div data-reveal style={reveal(0.15)} className="relative mt-4 md:mt-0">
           <div
             data-px="0.35"
-            className="absolute -top-[30px] right-0 font-mono text-[10px] text-sage sm:right-[-10px] sm:text-xs"
+            className="mb-2 text-right font-mono text-[10px] text-sage md:absolute md:-top-[30px] md:right-[-10px] md:mb-0 md:text-xs"
           >
             liquidità nel tempo →
           </div>
