@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daniele Di Giorgio — sito
 
-## Getting Started
+Single-page marketing site for a structured-finance consultant (*cessione del
+credito*), built with **Next.js 16 (App Router), Tailwind CSS v4 and
+shadcn/ui**. Ported faithfully from the original standalone HTML design,
+including every scroll/pointer animation.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How it's organised
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Design tokens** (colour, type, motion) → `src/app/globals.css` (`@theme`).
+- **Copy & content** → `src/lib/site-config.ts`.
+- **Sections** (server components) → `src/components/sections/`.
+- **Fixed chrome** (nav, progress bar, barometer, path rail) → `src/components/chrome/`.
+- **Motion engine** (reveal, tilt, parallax, counters, particles, scroll-driven
+  chrome) → `src/hooks/use-site-motion.ts`, hosted by `src/components/site-motion.tsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Animations are declarative: add a `data-*` hook (`data-reveal`, `data-tilt`,
+`data-px`, `data-count`, `data-grow-bar`, `data-particles`, `data-breathe`) in
+markup and the engine wires the behaviour.
 
-## Learn More
+### Configurable props
 
-To learn more about Next.js, take a look at the following resources:
+`src/lib/site-config.ts` exposes the two original component props:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `motion`: `"Massima"` (full) or `"Calma"` (reduced parallax & particles).
+- `accentWarm`: the warm accent colour (also settable via the `--accent-warm`
+  CSS variable in `globals.css`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build rules
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Conventions that keep the design system coherent across changes are documented
+in **`AGENTS.md`** (imported by `CLAUDE.md`) and mirrored for Cursor in
+**`.cursor/rules/design-system.mdc`**. Read them before editing.

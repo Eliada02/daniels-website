@@ -1,0 +1,44 @@
+---
+description: Daniele Di Giorgio site — design system & build rules (always apply)
+globs:
+alwaysApply: true
+---
+
+# Build rules (binding for every change)
+
+Full reference: `AGENTS.md` at the repo root. Summary below.
+
+Stack: Next.js 16 App Router · React 19 · Tailwind v4 (CSS-first, tokens in
+`src/app/globals.css` `@theme`, no `tailwind.config`) · shadcn/ui.
+
+## Tokens — edit in `globals.css` `@theme`, never hardcode hex
+- Colours (utilities `bg-/text-/border-…`): `forest` #083833 (dark bg / ink),
+  `cream` #F9FAF5 (light bg / text-on-dark), `sage` #D9E9AA (accent/CTA),
+  `olive` #50772F (mono labels / ring), `clay` `var(--accent-warm)` #c2683f
+  (warm accent), `mist` #eef0e6 (education bg).
+- Opacity via slash modifier (`text-cream/80`), not new `rgba()`.
+- Fonts: `font-serif` Cormorant (headings/numbers/quotes), `font-sans` Manrope
+  (body), `font-mono` JetBrains (kickers/labels/counters, uppercase + wide tracking).
+- Headings: `text-[clamp(...)] leading-[1.0x] tracking-[-0.02em]`.
+
+## Content
+All copy & repeated data live in `src/lib/site-config.ts` (typed); map over it.
+Don't inline card/step/testimonial lists in JSX.
+
+## Components
+Sections in `src/components/sections/` are **server components**. Only
+`site-motion.tsx` and `src/hooks/*` are `"use client"`. Don't add `"use client"`
+to a section without a real browser-API need.
+
+## Motion — declarative `data-*` hooks, engine in `src/hooks/use-site-motion.ts`
+`data-reveal` (stagger via `style={reveal(s)}`), `data-tilt` (base rotation via
+`--tilt-base`), `data-px="n"` (parallax), `data-count`+`data-from/to/suffix`,
+`data-grow-bar`+`--h`, `data-particles="id"`, `data-breathe`. Effects mutate the
+DOM only — never drive them with React state. Always degrade under
+`prefers-reduced-motion`. Use `cssVars()`/`reveal()` from `src/lib/css.ts` for
+custom-property styles.
+
+## New section checklist
+Create server component with stable `id` + `data-screen-label` → copy in
+`site-config.ts` → brand tokens + `data-reveal` → register in `page.tsx` →
+add `id` to the light/dark lists in `use-site-motion.ts` → `npm run lint && npm run build`.
