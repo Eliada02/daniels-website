@@ -24,6 +24,21 @@ export const siteConfig = {
   ],
 
   barometerLabel: "Consapevolezza finanziaria",
+
+  loader: {
+    kicker: "Finanza strutturata · Cessione del credito",
+    headline: "Il capitale",
+    headlineEm: "sbloccato",
+    status: "Strutturazione in corso",
+    chartLabels: ["Oggi", "Cessione", "Stabilità"] as const,
+    chartBars: [
+      { h: "24%", bg: "rgba(249,250,245,.22)", delay: "0.12s" },
+      { h: "40%", bg: "rgba(249,250,245,.3)", delay: "0.26s" },
+      { h: "58%", bg: "#50772F", delay: "0.4s" },
+      { h: "78%", bg: "#7da34f", delay: "0.54s" },
+      { h: "100%", bg: "#D9E9AA", delay: "0.68s" },
+    ] as const,
+  },
 } as const;
 
 export type PainCard = {

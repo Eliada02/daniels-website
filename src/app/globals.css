@@ -294,6 +294,33 @@
     animation: dgBillFlutter 1.1s ease-in-out infinite;
   }
 
+  /* Intro loader ------------------------------------------------ */
+  @keyframes dgLoaderExit {
+    to { opacity: 0; visibility: hidden; }
+  }
+  @keyframes dgLoaderGrowBar {
+    from { height: 0; }
+    to { height: var(--h); }
+  }
+  .dg-loader-grow-bar {
+    animation: dgLoaderGrowBar 0.85s cubic-bezier(0.23, 1, 0.32, 1) var(--bar-delay, 0s) both;
+  }
+  .dg-loader[data-exiting] {
+    animation: dgLoaderExit 0.52s ease forwards;
+    pointer-events: none;
+  }
+
+  /* Loader chest — one-shot open, synced to intro timing */
+  .dg-loader-chest .dg-chest [data-anim] {
+    animation-duration: 1.55s !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: forwards !important;
+  }
+  .dg-loader-chest .dg-chest [data-anim="coin"],
+  .dg-loader-chest .dg-chest [data-anim="bill"] {
+    animation-duration: 1.55s !important;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] {
       opacity: 1 !important;
@@ -317,6 +344,33 @@
     .dg-chest [data-anim="coin"],
     .dg-chest [data-anim="bill"] {
       opacity: 1 !important;
+    }
+    .dg-loader [data-loader-bar],
+    .dg-loader-symbol {
+      animation: none !important;
+    }
+    .dg-loader [data-loader-bar] {
+      transform: scaleX(1);
+    }
+    .dg-loader-grow-bar {
+      animation: none !important;
+      height: var(--h) !important;
+    }
+    .dg-loader-chest .dg-chest [data-anim] {
+      animation: none !important;
+    }
+    .dg-loader-chest .dg-chest [data-anim="lid"] {
+      transform: rotateX(-104deg) !important;
+    }
+    .dg-loader-chest .dg-chest [data-anim="glow"],
+    .dg-loader-chest .dg-chest [data-anim="coin"],
+    .dg-loader-chest .dg-chest [data-anim="bill"] {
+      opacity: 1 !important;
+    }
+    .dg-loader[data-exiting] {
+      animation: none !important;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }
