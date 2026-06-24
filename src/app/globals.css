@@ -76,9 +76,9 @@
 }
 @keyframes dgChestOpen {
   0%, 18% { transform: rotateX(0deg); }
-  38% { transform: rotateX(-24deg); }
-  46%, 74% { transform: rotateX(-118deg); }
-  88% { transform: rotateX(-18deg); }
+  38% { transform: rotateX(24deg); }
+  46%, 74% { transform: rotateX(118deg); }
+  88% { transform: rotateX(18deg); }
   96%, 100% { transform: rotateX(0deg); }
 }
 @keyframes dgChestGlow {
@@ -230,7 +230,7 @@
     overflow-x: hidden;
   }
   section[id] {
-    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 4.75rem);
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 5.5rem);
   }
   ::selection {
     background: #0054a6;
@@ -444,7 +444,7 @@
       animation: none !important;
     }
     .dg-chest [data-anim="lid"] {
-      transform: rotateX(-104deg) !important;
+      transform: rotateX(104deg) !important;
     }
     .dg-chest [data-anim="lock"] {
       animation: none !important;
@@ -462,7 +462,7 @@
       animation: none !important;
     }
     .dg-loader-chest .dg-chest [data-anim="lid"] {
-      transform: rotateX(-104deg) !important;
+      transform: rotateX(104deg) !important;
     }
     .dg-loader-chest .dg-chest [data-anim="glow"],
     .dg-loader-chest .dg-chest [data-anim="coin"],

@@ -55,8 +55,7 @@ export const painCards: PainCard[] = [
   {
     title: "Pagamenti ritardati",
     body: "Aspetti 6, 9, 12 mesi un pagamento già dovuto. Il credito esiste, ma è bloccato — e con lui ogni tua decisione.",
-    variant: "feature",
-    span: "row",
+    variant: "plain",
     dot: true,
   },
   {
@@ -66,15 +65,15 @@ export const painCards: PainCard[] = [
     dot: true,
   },
   {
-    title: "Zero prevedibilità",
-    body: "Senza una data certa di incasso, ogni piano è un'ipotesi. Pianificare diventa impossibile.",
-    variant: "dark",
-  },
-  {
     title: "Paura dell'instabilità",
     body: "Ciò che spaventa non è il costo: è non sapere se il prossimo mese reggerà.",
     variant: "plain",
     dot: true,
+  },
+  {
+    title: "Zero prevedibilità",
+    body: "Senza una data certa di incasso, ogni piano è un'ipotesi. Pianificare diventa impossibile.",
+    variant: "dark",
   },
 ];
 

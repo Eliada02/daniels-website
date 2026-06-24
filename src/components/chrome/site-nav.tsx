@@ -55,8 +55,8 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
       } ${open ? "flex min-h-dvh flex-col" : ""}`}
     >
       <div
-        className={`relative z-[2] mx-auto flex w-full max-w-[1280px] shrink-0 items-center justify-between gap-3 px-4 sm:px-10 ${
-          open ? "border-b border-current/10 py-3.5 sm:py-4" : "py-3 sm:py-3.5"
+        className={`relative z-[2] mx-auto flex w-full max-w-[1280px] shrink-0 items-center justify-between gap-4 px-4 sm:px-10 ${
+          open ? "border-b border-current/10 py-4 sm:py-5" : "py-4 sm:py-5"
         }`}
       >
         {/* logo + monogram */}
@@ -66,7 +66,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
           onClick={() => setOpen(false)}
           className="group flex min-w-0 shrink items-center gap-2.5 text-inherit no-underline transition-colors duration-300 sm:gap-3"
         >
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-current/30 font-serif text-[17px] font-bold leading-none shadow-[inset_0_1px_0_rgba(249,250,245,0.08)] transition-colors duration-300 group-hover:border-current/70">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-current/30 font-serif text-[18px] font-bold leading-none shadow-[inset_0_1px_0_rgba(249,250,245,0.08)] transition-colors duration-300 group-hover:border-current/70">
             {siteConfig.brand.initials}
           </span>
           <span className="hidden min-w-0 truncate font-serif text-[11px] uppercase tracking-[0.28em] opacity-85 min-[400px]:block sm:text-[12px] sm:tracking-[0.32em]">
@@ -83,7 +83,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
             <Link
               key={item.href}
               href={item.href}
-              className="group relative px-3 py-2 text-[13px] font-semibold tracking-[0.01em] no-underline opacity-80 transition-opacity duration-200 hover:opacity-100"
+              className="group relative px-3.5 py-2.5 text-[13px] font-semibold tracking-[0.01em] no-underline opacity-80 transition-opacity duration-200 hover:opacity-100"
             >
               {item.label}
               <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -91,7 +91,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
           ))}
           <Link
             href="/#cta"
-            className="ml-3 rounded-full border border-current px-5 py-2 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-olive"
+            className="ml-3 rounded-full border border-current px-5 py-2.5 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-olive"
           >
             Parliamone
           </Link>
@@ -104,7 +104,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
           aria-expanded={open}
           aria-controls="mobile-nav-panel"
           onClick={() => setOpen((v) => !v)}
-          className={`dg-nav-mobile-toggle relative grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-all duration-300 ease-out md:hidden ${
+          className={`dg-nav-mobile-toggle relative grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-300 ease-out md:hidden ${
             open
               ? "border-cream/15 bg-cream/[0.06]"
               : "border-current/15 bg-current/[0.05] hover:border-current/25 hover:bg-current/[0.08]"

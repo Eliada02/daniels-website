@@ -1,40 +1,34 @@
 import { reveal } from "@/lib/css";
 import { painCards, type PainCard } from "@/lib/site-config";
 
-function PainTile({ card, delay }: { card: PainCard; delay: number }) {
-  const spanClass =
-    card.span === "row" ? "sm:row-span-2" : card.span === "col" ? "sm:col-span-2" : "";
-
-  const dot = card.dot ? (
+function PainDot({ show }: { show?: boolean }) {
+  return (
     <span
-      data-pain-dot
-      className="mb-[18px] inline-block h-2.5 w-2.5 rounded-full bg-clay shadow-[0_0_0_4px_rgba(194,104,63,0.16)]"
+      data-pain-dot={show || undefined}
+      aria-hidden={!show}
+      className={`mb-3 block h-2.5 w-2.5 shrink-0 rounded-full sm:mb-5 ${
+        show
+          ? "bg-clay shadow-[0_0_0_4px_rgba(194,104,63,0.16)]"
+          : "invisible"
+      }`}
     />
-  ) : null;
+  );
+}
 
-  if (card.variant === "feature") {
-    return (
-      <article
-        data-reveal
-        data-tilt
-        style={reveal(delay)}
-        className={`${spanClass} flex min-h-0 flex-col justify-between rounded-lg border border-olive/20 bg-gradient-to-b from-olive/[0.04] to-mist p-6 shadow-[0_10px_40px_rgba(0,84,166,0.08)] sm:min-h-[330px] sm:p-9`}
-      >
-        <span
-          data-pain-dot
-          className="h-3 w-3 rounded-full bg-clay shadow-[0_0_0_5px_rgba(194,104,63,0.16)]"
-        />
-        <div>
-          <h3 className="font-serif text-[clamp(26px,7vw,34px)] font-semibold leading-[1.1]">
-            {card.title}
-          </h3>
-          <p className="mt-3.5 text-[15.5px] leading-[1.6] text-forest/[0.66]">
-            {card.body}
-          </p>
-        </div>
-      </article>
-    );
-  }
+function PainTile({ card, delay }: { card: PainCard; delay: number }) {
+  const spanClass = card.span === "col" ? "sm:col-span-2" : "";
+
+  const mobileCenter =
+    "items-center text-center sm:items-start sm:text-left";
+
+  const tileShell =
+    "flex h-full min-h-[168px] flex-col justify-start rounded-lg p-5 sm:min-h-[220px] sm:p-8 lg:min-h-[240px] lg:p-9";
+
+  const titleClass =
+    "font-serif text-[clamp(22px,5.5vw,28px)] font-semibold leading-[1.12]";
+
+  const bodyClass =
+    "mt-2.5 text-[14.5px] leading-[1.55] sm:mt-3 sm:text-[15px] sm:leading-[1.6]";
 
   if (card.variant === "dark") {
     return (
@@ -42,33 +36,25 @@ function PainTile({ card, delay }: { card: PainCard; delay: number }) {
         data-reveal
         data-tilt
         style={reveal(delay)}
-        className="flex flex-col justify-center rounded-lg bg-olive p-6 text-cream shadow-[0_16px_44px_rgba(0,84,166,0.24)] sm:p-[30px]"
+        className={`${spanClass} ${mobileCenter} ${tileShell} bg-olive text-cream shadow-[0_16px_44px_rgba(0,84,166,0.24)]`}
       >
-        <h3 className="font-serif text-[clamp(22px,5.5vw,28px)] font-semibold leading-[1.12] text-sage">
-          {card.title}
-        </h3>
-        <p className="mt-2.5 text-[14.5px] leading-[1.55] text-cream/[0.78]">
-          {card.body}
-        </p>
+        <PainDot />
+        <h3 className={`${titleClass} text-sage`}>{card.title}</h3>
+        <p className={`${bodyClass} text-cream/[0.78]`}>{card.body}</p>
       </article>
     );
   }
 
-  // plain
   return (
     <article
       data-reveal
       data-tilt
       style={reveal(delay)}
-      className="rounded-lg border border-olive/20 bg-gradient-to-b from-olive/[0.04] to-mist p-6 shadow-[0_10px_40px_rgba(0,84,166,0.08)] sm:p-[30px]"
+      className={`${spanClass} ${mobileCenter} ${tileShell} border border-olive/20 bg-gradient-to-b from-olive/[0.04] to-mist shadow-[0_10px_40px_rgba(0,84,166,0.08)]`}
     >
-      {dot}
-      <h3 className="font-serif text-[clamp(22px,5.5vw,26px)] font-semibold leading-[1.12]">
-        {card.title}
-      </h3>
-      <p className="mt-2.5 text-[14.5px] leading-[1.55] text-forest/[0.66]">
-        {card.body}
-      </p>
+      <PainDot show={card.dot} />
+      <h3 className={`${titleClass} text-forest`}>{card.title}</h3>
+      <p className={`${bodyClass} text-forest/[0.66]`}>{card.body}</p>
     </article>
   );
 }
@@ -97,7 +83,6 @@ export function PainPoints() {
             Eppure la liquidità non arriva mai.
           </h2>
 
-          {/* heartbeat — in document flow so it never overlaps copy */}
           <svg
             viewBox="0 0 1200 80"
             preserveAspectRatio="none"
@@ -136,29 +121,28 @@ export function PainPoints() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr] lg:[grid-auto-rows:minmax(150px,auto)]">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 sm:[grid-auto-rows:1fr] lg:gap-6">
           {painCards.map((card, i) => (
             <PainTile key={card.title} card={card} delay={i * 0.08} />
           ))}
 
-          {/* wide closing tile */}
           <article
             data-reveal
             style={reveal(0.18)}
-            className="flex flex-col gap-5 rounded-lg bg-olive p-6 text-cream shadow-[0_12px_40px_rgba(0,84,166,0.22)] sm:col-span-2 sm:flex-row sm:items-center sm:justify-between sm:gap-[30px] sm:p-9"
+            className="flex flex-col items-center gap-4 rounded-lg bg-olive p-5 text-center text-cream shadow-[0_12px_40px_rgba(0,84,166,0.22)] sm:col-span-2 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-9 sm:text-left"
           >
-            <div>
+            <div className="w-full sm:w-auto">
               <h3 className="font-serif text-[clamp(24px,6vw,32px)] font-semibold leading-[1.08]">
                 La crescita crea stress,
                 <br />
                 non stabilità.
               </h3>
-              <p className="mt-3 max-w-[440px] text-[15px] leading-[1.6] text-cream/85">
+              <p className="mx-auto mt-2.5 max-w-[520px] text-[15px] leading-[1.55] text-cream/85 sm:mx-0 sm:mt-3 sm:leading-[1.6]">
                 Più fatturi verso la PA, più capitale resta intrappolato. È un
                 problema strutturale — e va risolto con una struttura.
               </p>
             </div>
-            <span className="hidden self-end font-serif text-[64px] font-bold leading-none text-cream/25 sm:inline">
+            <span className="hidden shrink-0 font-serif text-[64px] font-bold leading-none text-cream/25 sm:inline">
               € →
             </span>
           </article>

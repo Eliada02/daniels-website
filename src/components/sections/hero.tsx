@@ -17,7 +17,7 @@ export function Hero() {
     <section
       id="hero"
       data-screen-label="Hero"
-      className="relative flex min-h-[100svh] flex-col justify-start overflow-hidden bg-olive pt-[calc(env(safe-area-inset-top)+4.75rem)] pb-24 text-cream sm:justify-center sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
+      className="relative flex min-h-[100svh] flex-col justify-start overflow-hidden bg-olive pt-[calc(env(safe-area-inset-top)+5.5rem)] pb-24 text-cream sm:justify-center sm:pt-28 sm:pb-28 lg:pt-32 lg:pb-32"
     >
       <canvas data-particles="hero" className="absolute inset-0 z-[1] h-full w-full" />
 
@@ -43,7 +43,7 @@ export function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 px-5 sm:gap-10 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-16 px-5 sm:gap-14 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24 lg:px-16">
         {/* headline — first on mobile, right column on desktop */}
         <div className="relative isolate z-10 order-1 lg:order-2">
           <span
@@ -56,7 +56,7 @@ export function Hero() {
           <h1
             data-reveal
             style={reveal(0.1)}
-            className="font-serif text-[clamp(32px,8.5vw,84px)] font-semibold leading-[1.04] tracking-[-0.02em] 2xl:-ml-10"
+            className="font-serif text-[clamp(28px,7.2vw,72px)] font-semibold leading-[1.04] tracking-[-0.02em] 2xl:-ml-10"
           >
             Il capitale bloccato
             <br />
