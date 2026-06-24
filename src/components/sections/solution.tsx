@@ -4,9 +4,9 @@ import { solutionAre, solutionNot, solutionFeatures } from "@/lib/site-config";
 const bars = [
   { h: "24%", bg: "rgba(249,250,245,.2)", delay: "0s" },
   { h: "40%", bg: "rgba(249,250,245,.28)", delay: ".12s" },
-  { h: "58%", bg: "#50772F", delay: ".24s" },
-  { h: "78%", bg: "#7da34f", delay: ".36s" },
-  { h: "100%", bg: "#D9E9AA", delay: ".48s" },
+  { h: "58%", bg: "#0054A6", delay: ".24s" },
+  { h: "78%", bg: "#5BA3E0", delay: ".36s" },
+  { h: "100%", bg: "#7EC8FF", delay: ".48s" },
 ];
 
 export function Solution() {
@@ -14,7 +14,7 @@ export function Solution() {
     <section
       id="soluzione"
       data-screen-label="Solution"
-      className="relative overflow-hidden bg-forest px-5 pb-24 pt-28 text-cream sm:px-10 sm:pt-28 md:[clip-path:polygon(0_4vw,100%_0,100%_100%,0_100%)] md:-mt-[2vw] lg:px-16 lg:pb-[150px] lg:pt-40"
+      className="relative overflow-hidden bg-olive px-5 pb-24 pt-28 text-cream sm:px-10 sm:pt-28 md:[clip-path:polygon(0_4vw,100%_0,100%_100%,0_100%)] md:-mt-[2vw] lg:px-16 lg:pb-[150px] lg:pt-40"
     >
       <canvas
         data-particles="soln"
@@ -69,7 +69,7 @@ export function Solution() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-lg border border-sage/40 bg-sage/[0.07] p-6">
+            <div className="rounded-lg border border-olive/40 bg-olive/12 p-6">
               <span className="font-mono text-[11px] tracking-[0.2em] text-sage">
                 SIAMO
               </span>
@@ -115,7 +115,7 @@ export function Solution() {
             </div>
           </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:gap-3.5">
-            <div className="flex-1 rounded-lg border border-sage/20 bg-sage/[0.07] p-4 sm:p-[18px]">
+            <div className="flex-1 rounded-lg border border-olive/35 bg-olive/12 p-4 sm:p-[18px]">
               <div className="font-serif text-[clamp(28px,8vw,38px)] font-bold text-sage">
                 <span data-count data-from="0" data-to="100" data-suffix="%">
                   0%
@@ -125,7 +125,7 @@ export function Solution() {
                 rischio trasferito (pro-soluto)
               </div>
             </div>
-            <div className="flex-1 rounded-lg border border-sage/20 bg-sage/[0.07] p-4 sm:p-[18px]">
+            <div className="flex-1 rounded-lg border border-olive/35 bg-olive/12 p-4 sm:p-[18px]">
               <div className="font-serif text-[clamp(28px,8vw,38px)] font-bold text-sage">
                 <span data-count data-from="360" data-to="0" data-suffix="gg">
                   360gg
@@ -146,7 +146,7 @@ export function Solution() {
             key={f.n}
             data-reveal
             style={reveal(i * 0.1)}
-            className="border-t border-sage/30 pt-[22px]"
+            className="border-t border-olive/40 pt-[22px]"
           >
             <span className="font-mono text-[13px] text-sage">{f.n}</span>
             <h4 className="mt-2 font-serif text-2xl font-semibold">{f.title}</h4>

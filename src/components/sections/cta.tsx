@@ -6,7 +6,7 @@ export function Cta() {
     <section
       id="cta"
       data-screen-label="CTA"
-      className="relative flex min-h-0 flex-col justify-center overflow-hidden bg-forest py-24 text-cream md:min-h-[90vh] md:py-0"
+      className="relative flex min-h-0 flex-col justify-center overflow-hidden bg-olive py-24 text-cream md:min-h-[90vh] md:py-0"
     >
       <canvas data-particles="cta" className="absolute inset-0 z-[1] h-full w-full" />
 
@@ -26,7 +26,7 @@ export function Cta() {
           pathLength={1}
           strokeDasharray={1}
           strokeDashoffset={1}
-          style={{ filter: "drop-shadow(0 0 8px rgba(217,233,170,.4))" }}
+          style={{ filter: "drop-shadow(0 0 10px rgba(0,84,166,.45))" }}
         />
       </svg>
 
@@ -64,13 +64,13 @@ export function Cta() {
             <a
               href="#hero"
               data-breathe
-              className="rounded-full bg-sage px-9 py-[17px] text-base font-bold text-forest no-underline"
+              className="rounded-full bg-olive px-9 py-[17px] text-base font-bold text-cream no-underline shadow-[0_8px_28px_rgba(0,84,166,0.38)] transition-colors hover:bg-olive-dark"
             >
               Prenota una consulenza
             </a>
             <a
               href="#hero"
-              className="text-sm font-semibold text-cream no-underline opacity-85"
+              className="rounded-full border border-sage/45 px-5 py-2.5 text-sm font-semibold text-sage no-underline transition-colors hover:bg-sage/10"
             >
               oppure scrivimi su WhatsApp →
             </a>
@@ -78,7 +78,7 @@ export function Cta() {
         </div>
 
         <div data-reveal style={reveal(0.15)}>
-          <div className="rounded-xl border border-sage/[0.22] bg-forest/[0.45] p-6 backdrop-blur-md sm:p-[34px]">
+          <div className="rounded-xl border border-olive/40 bg-olive/15 p-6 backdrop-blur-md sm:p-[34px]">
             <div className="font-serif text-[clamp(22px,5vw,26px)] font-semibold text-sage">
               Cosa otterrai
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { cssVars } from "@/lib/css";
 import { siteConfig } from "@/lib/site-config";
 
@@ -34,12 +35,12 @@ export function SiteNav() {
   return (
     <nav
       data-menu-open={open || undefined}
-      className="fixed inset-x-0 top-0 z-[160] border-b border-transparent bg-forest pt-[env(safe-area-inset-top)] text-cream transition-[background-color,color,box-shadow,border-color,backdrop-filter] duration-300"
+      className="fixed inset-x-0 top-0 z-[160] border-b border-transparent bg-olive pt-[env(safe-area-inset-top)] text-cream transition-[background-color,color,box-shadow,border-color,backdrop-filter] duration-300"
     >
       <div className="relative z-[2] mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-10 sm:py-3.5">
         {/* logo + monogram */}
-        <a
-          href="#hero"
+        <Link
+          href="/"
           data-nav-logo
           onClick={() => setOpen(false)}
           className="group flex min-w-0 items-center gap-2.5 text-inherit no-underline transition-colors duration-300 sm:gap-3"
@@ -53,7 +54,7 @@ export function SiteNav() {
           <span className="hidden font-serif text-[12px] uppercase tracking-[0.32em] opacity-85 sm:block">
             {siteConfig.brand.name}
           </span>
-        </a>
+        </Link>
 
         {/* desktop links */}
         <div
@@ -61,21 +62,21 @@ export function SiteNav() {
           className="hidden items-center gap-1 text-inherit transition-colors duration-300 md:flex"
         >
           {siteConfig.nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="group relative px-3 py-2 text-[13px] font-semibold tracking-[0.01em] no-underline opacity-80 transition-opacity duration-200 hover:opacity-100"
             >
               {item.label}
               <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100" />
-            </a>
+            </Link>
           ))}
-          <a
-            href="#cta"
-            className="ml-3 rounded-full border border-current px-5 py-2 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-forest"
+          <Link
+            href="/#cta"
+            className="ml-3 rounded-full border border-current px-5 py-2 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-olive hover:bg-olive hover:text-cream"
           >
             Parliamone
-          </a>
+          </Link>
         </div>
 
         {/* mobile toggle */}
@@ -132,7 +133,7 @@ export function SiteNav() {
             </p>
             <div className="flex flex-col gap-1">
               {siteConfig.nav.map((item, i) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -148,17 +149,17 @@ export function SiteNav() {
                   <span className="ml-auto translate-x-1 text-sm opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-50">
                     →
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
-            <a
-              href="#cta"
+            <Link
+              href="/#cta"
               onClick={() => setOpen(false)}
-              className="dg-nav-mobile-link mt-4 flex w-full items-center justify-center rounded-full bg-sage px-5 py-3.5 text-center text-[14px] font-bold tracking-[0.02em] text-forest no-underline shadow-[0_8px_24px_rgba(217,233,170,0.22)] transition-transform duration-300 active:scale-[0.98]"
+              className="dg-nav-mobile-link mt-4 flex w-full items-center justify-center rounded-full bg-olive px-5 py-3.5 text-center text-[14px] font-bold tracking-[0.02em] text-cream no-underline shadow-[0_8px_24px_rgba(0,84,166,0.32)] transition-transform duration-300 active:scale-[0.98]"
               style={cssVars({ "--nav-i": siteConfig.nav.length })}
             >
               Parliamone
-            </a>
+            </Link>
           </div>
         </div>
       </div>

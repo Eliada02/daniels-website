@@ -2,7 +2,7 @@ import { reveal } from "@/lib/css";
 import { TreasureChest } from "@/components/hero/treasure-chest";
 
 const floatChip =
-  "absolute z-[3] hidden whitespace-nowrap rounded-full border border-sage/20 bg-sage/[0.08] px-3.5 py-2 font-mono text-[13px] text-sage backdrop-blur-sm xl:block";
+  "absolute z-[3] hidden whitespace-nowrap rounded-full border border-olive/35 bg-olive/12 px-3.5 py-2 font-mono text-[13px] text-sage backdrop-blur-sm xl:block";
 
 // Positioned in the empty outer gutters so they frame the composition
 // without ever sitting on top of the headline or portrait.
@@ -17,18 +17,18 @@ export function Hero() {
     <section
       id="hero"
       data-screen-label="Hero"
-      className="relative flex min-h-[100svh] flex-col justify-start overflow-hidden bg-forest pt-[calc(env(safe-area-inset-top)+4.75rem)] pb-24 text-cream sm:justify-center sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
+      className="relative flex min-h-[100svh] flex-col justify-start overflow-hidden bg-olive pt-[calc(env(safe-area-inset-top)+4.75rem)] pb-24 text-cream sm:justify-center sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32"
     >
       <canvas data-particles="hero" className="absolute inset-0 z-[1] h-full w-full" />
 
       {/* geometric background rings */}
       <div
         data-px="0.12"
-        className="pointer-events-none absolute -right-[60px] -top-10 z-[1] h-[280px] w-[280px] rounded-full border border-sage/15 sm:-right-[120px] sm:-top-20 sm:h-[560px] sm:w-[560px]"
+        className="pointer-events-none absolute -right-[60px] -top-10 z-[1] h-[280px] w-[280px] rounded-full border border-olive/25 sm:-right-[120px] sm:-top-20 sm:h-[560px] sm:w-[560px]"
       />
       <div
         data-px="0.2"
-        className="pointer-events-none absolute -bottom-24 right-8 z-[1] h-[200px] w-[200px] rounded-full border border-sage/10 sm:-bottom-40 sm:right-[120px] sm:h-[360px] sm:w-[360px]"
+        className="pointer-events-none absolute -bottom-24 right-8 z-[1] h-[200px] w-[200px] rounded-full border border-olive/18 sm:-bottom-40 sm:right-[120px] sm:h-[360px] sm:w-[360px]"
       />
 
       {/* floating value chips (wide screens only, in the side gutters) */}
@@ -50,7 +50,7 @@ export function Hero() {
             data-reveal
             className="mb-5 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.18em] text-sage sm:mb-6 sm:text-xs sm:tracking-[0.22em]"
           >
-            <span className="h-px w-6 shrink-0 bg-sage sm:w-[30px]" />
+            <span className="h-px w-6 shrink-0 bg-olive sm:w-[30px]" />
             Finanza strutturata · Cessione del credito
           </span>
           <h1
@@ -83,13 +83,13 @@ export function Hero() {
             <a
               href="#cta"
               data-breathe
-              className="rounded-full bg-sage px-7 py-3.5 text-[14px] font-bold tracking-[0.01em] text-forest no-underline sm:px-8 sm:py-4 sm:text-[15px]"
+              className="rounded-full bg-olive px-7 py-3.5 text-[14px] font-bold tracking-[0.01em] text-cream no-underline shadow-[0_8px_28px_rgba(0,84,166,0.38)] transition-colors hover:bg-olive-dark sm:px-8 sm:py-4 sm:text-[15px]"
             >
               Prenota una consulenza
             </a>
             <a
               href="#problema"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-cream no-underline opacity-85"
+              className="inline-flex items-center gap-2 rounded-full border border-sage/45 px-5 py-2.5 text-sm font-semibold text-sage no-underline transition-colors hover:bg-sage/10"
             >
               Scopri come ↓
             </a>
@@ -100,10 +100,10 @@ export function Hero() {
         <div data-px="-0.18" className="relative order-2 z-0 mx-auto mt-2 w-full max-w-[min(100%,280px)] sm:mt-0 sm:max-w-[360px] lg:order-1 lg:mx-0 lg:max-w-none">
           <div
             data-reveal
-            className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-md border border-sage/20 shadow-[0_40px_90px_rgba(0,0,0,0.4)] sm:aspect-[4/5] lg:overflow-visible"
+            className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-md border border-olive/35 shadow-[0_40px_90px_rgba(0,0,0,0.4)] sm:aspect-[4/5] lg:overflow-visible"
             style={{
               background:
-                "radial-gradient(circle at 50% 38%, #0d4942 0%, #0a3833 45%, #061f1c 100%)",
+                "radial-gradient(circle at 50% 38%, #1a6fc0 0%, #0054A6 45%, #06294c 100%)",
             }}
           >
             {/* subtle inner vignette + grid */}
@@ -111,7 +111,7 @@ export function Hero() {
               className="pointer-events-none absolute inset-0 opacity-40"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(217,233,170,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(217,233,170,.06) 1px,transparent 1px)",
+                  "linear-gradient(rgba(0,84,166,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,84,166,.08) 1px,transparent 1px)",
                 backgroundSize: "32px 32px",
                 maskImage:
                   "radial-gradient(circle at 50% 40%,#000,transparent 75%)",

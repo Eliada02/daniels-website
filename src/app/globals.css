@@ -10,13 +10,14 @@
    See CLAUDE.md → "Design system" for the rules.
    ============================================================ */
 @theme {
-  /* Brand palette ------------------------------------------------ */
-  --color-forest: #083833; /* deep green — dark sections / ink      */
-  --color-cream: #f9faf5; /* warm off-white — light sections        */
-  --color-sage: #d9e9aa; /* lime accent — highlights / CTAs         */
-  --color-olive: #50772f; /* mid green — labels / secondary accent  */
-  --color-clay: var(--accent-warm); /* warm accent (configurable)   */
-  --color-mist: #eef0e6; /* muted stone — education section bg       */
+  /* Brand palette — olive = #0054A6 dominant · forest = deep navy · sage = light tint */
+  --color-forest: #06294c; /* deep navy — dark sections / ink            */
+  --color-cream: #f9faf5; /* warm off-white — light sections             */
+  --color-sage: #7ec8ff; /* light blue tint — accents on dark bg         */
+  --color-olive: #0054a6; /* brand blue — cards, CTAs, labels           */
+  --color-olive-dark: #004488; /* darker blue — button hover              */
+  --color-clay: var(--accent-warm); /* warm accent (configurable)        */
+  --color-mist: #e8f2fc; /* muted blue wash — education section bg       */
 
   /* Type families ----------------------------------------------- */
   --font-serif: var(--font-cormorant), Georgia, serif;
@@ -35,8 +36,8 @@
     50% { transform: translateY(-18px); }
   }
   @keyframes dgBreathe {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(80, 119, 47, 0.45); }
-    50% { box-shadow: 0 0 0 18px rgba(80, 119, 47, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,84,166, 0.45); }
+    50% { box-shadow: 0 0 0 18px rgba(0,84,166, 0); }
   }
   @keyframes dgPulse {
     0%, 100% { transform: scale(1); opacity: 0.9; }
@@ -184,36 +185,36 @@
 :root {
   --radius: 0.5rem;
   --background: #f9faf5; /* cream */
-  --foreground: #083833; /* forest */
+  --foreground: #06294c; /* forest */
   --card: #ffffff;
-  --card-foreground: #083833;
+  --card-foreground: #06294c;
   --popover: #ffffff;
-  --popover-foreground: #083833;
-  --primary: #083833; /* forest */
+  --popover-foreground: #06294c;
+  --primary: #0054a6; /* olive — dominant CTA */
   --primary-foreground: #f9faf5; /* cream */
-  --secondary: #d9e9aa; /* sage */
-  --secondary-foreground: #083833;
-  --muted: #eef0e6; /* mist */
-  --muted-foreground: #4a635e;
-  --accent: #d9e9aa; /* sage */
-  --accent-foreground: #083833;
+  --secondary: #7ec8ff; /* sage — secondary buttons / highlights */
+  --secondary-foreground: #06294c;
+  --muted: #e8f2fc; /* mist */
+  --muted-foreground: #3d5f82;
+  --accent: #7ec8ff; /* sage */
+  --accent-foreground: #06294c;
   --destructive: #c2683f; /* clay */
-  --border: rgba(8, 56, 51, 0.08);
-  --input: rgba(8, 56, 51, 0.12);
-  --ring: #50772f; /* olive */
-  --chart-1: #083833;
-  --chart-2: #50772f;
-  --chart-3: #7da34f;
-  --chart-4: #d9e9aa;
+  --border: rgba(0, 84, 166, 0.14);
+  --input: rgba(0, 84, 166, 0.16);
+  --ring: #0054a6; /* olive */
+  --chart-1: #06294c;
+  --chart-2: #0054a6;
+  --chart-3: #3d8fd4;
+  --chart-4: #7ec8ff;
   --chart-5: #c2683f;
   --sidebar: #f9faf5;
-  --sidebar-foreground: #083833;
-  --sidebar-primary: #083833;
+  --sidebar-foreground: #06294c;
+  --sidebar-primary: #0054a6;
   --sidebar-primary-foreground: #f9faf5;
-  --sidebar-accent: #d9e9aa;
-  --sidebar-accent-foreground: #083833;
-  --sidebar-border: rgba(8, 56, 51, 0.08);
-  --sidebar-ring: #50772f;
+  --sidebar-accent: #7ec8ff;
+  --sidebar-accent-foreground: #06294c;
+  --sidebar-border: rgba(0, 84, 166, 0.14);
+  --sidebar-ring: #0054a6;
 }
 
 @layer base {
@@ -232,8 +233,8 @@
     scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 4.75rem);
   }
   ::selection {
-    background: #d9e9aa;
-    color: #083833;
+    background: #0054a6;
+    color: #f9faf5;
   }
 
   /* Scroll-reveal — elements start hidden; the motion engine adds

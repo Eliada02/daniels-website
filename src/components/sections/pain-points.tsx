@@ -18,7 +18,7 @@ function PainTile({ card, delay }: { card: PainCard; delay: number }) {
         data-reveal
         data-tilt
         style={reveal(delay)}
-        className={`${spanClass} flex min-h-0 flex-col justify-between rounded-lg border border-forest/[0.08] bg-gradient-to-b from-white to-[#f3efe6] p-6 shadow-[0_10px_40px_rgba(8,56,51,0.05)] sm:min-h-[330px] sm:p-9`}
+        className={`${spanClass} flex min-h-0 flex-col justify-between rounded-lg border border-olive/20 bg-gradient-to-b from-olive/[0.04] to-mist p-6 shadow-[0_10px_40px_rgba(0,84,166,0.08)] sm:min-h-[330px] sm:p-9`}
       >
         <span
           data-pain-dot
@@ -42,7 +42,7 @@ function PainTile({ card, delay }: { card: PainCard; delay: number }) {
         data-reveal
         data-tilt
         style={reveal(delay)}
-        className="flex flex-col justify-center rounded-lg bg-forest p-6 text-cream shadow-[0_16px_44px_rgba(8,56,51,0.18)] sm:p-[30px]"
+        className="flex flex-col justify-center rounded-lg bg-olive p-6 text-cream shadow-[0_16px_44px_rgba(0,84,166,0.24)] sm:p-[30px]"
       >
         <h3 className="font-serif text-[clamp(22px,5.5vw,28px)] font-semibold leading-[1.12] text-sage">
           {card.title}
@@ -60,7 +60,7 @@ function PainTile({ card, delay }: { card: PainCard; delay: number }) {
       data-reveal
       data-tilt
       style={reveal(delay)}
-      className="rounded-lg border border-forest/[0.08] bg-gradient-to-b from-white to-[#f3efe6] p-6 shadow-[0_10px_40px_rgba(8,56,51,0.05)] sm:p-[30px]"
+      className="rounded-lg border border-olive/20 bg-gradient-to-b from-olive/[0.04] to-mist p-6 shadow-[0_10px_40px_rgba(0,84,166,0.08)] sm:p-[30px]"
     >
       {dot}
       <h3 className="font-serif text-[clamp(22px,5.5vw,26px)] font-semibold leading-[1.12]">
@@ -108,7 +108,7 @@ export function PainPoints() {
               data-heartbeat
               d="M0 40 H300 l18 -26 l20 52 l16 -40 l14 14 H560 l18 -30 l22 60 l16 -46 l12 16 H900 l18 -26 l20 52 l16 -40 l14 14 H1200"
               fill="none"
-              stroke="#50772F"
+              stroke="#0054A6"
               strokeWidth={2}
               pathLength={1}
               strokeDasharray={1}
@@ -145,7 +145,7 @@ export function PainPoints() {
           <article
             data-reveal
             style={reveal(0.18)}
-            className="flex flex-col gap-5 rounded-lg bg-sage p-6 shadow-[0_10px_40px_rgba(8,56,51,0.06)] sm:col-span-2 sm:flex-row sm:items-center sm:justify-between sm:gap-[30px] sm:p-9"
+            className="flex flex-col gap-5 rounded-lg bg-olive p-6 text-cream shadow-[0_12px_40px_rgba(0,84,166,0.22)] sm:col-span-2 sm:flex-row sm:items-center sm:justify-between sm:gap-[30px] sm:p-9"
           >
             <div>
               <h3 className="font-serif text-[clamp(24px,6vw,32px)] font-semibold leading-[1.08]">
@@ -153,12 +153,12 @@ export function PainPoints() {
                 <br />
                 non stabilità.
               </h3>
-              <p className="mt-3 max-w-[440px] text-[15px] leading-[1.6] text-forest/[0.72]">
+              <p className="mt-3 max-w-[440px] text-[15px] leading-[1.6] text-cream/85">
                 Più fatturi verso la PA, più capitale resta intrappolato. È un
                 problema strutturale — e va risolto con una struttura.
               </p>
             </div>
-            <span className="hidden self-end font-serif text-[64px] font-bold leading-none text-forest/[0.18] sm:inline">
+            <span className="hidden self-end font-serif text-[64px] font-bold leading-none text-cream/25 sm:inline">
               € →
             </span>
           </article>

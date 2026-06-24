@@ -161,45 +161,45 @@ export function useSiteMotion(
       { bg: string; ink: string; border: string; shadow: string }
     > = {
       hero: {
-        bg: "#083833",
+        bg: "#0054a6",
         ink: "#F9FAF5",
-        border: "rgba(217,233,170,.14)",
+        border: "rgba(126,200,255,.18)",
         shadow: "0 12px 30px rgba(0,0,0,.18)",
       },
       problema: {
         bg: "#F9FAF5",
-        ink: "#083833",
-        border: "rgba(8,56,51,.08)",
-        shadow: "0 10px 30px rgba(8,56,51,.06)",
+        ink: "#06294c",
+        border: "rgba(0,84,166,.12)",
+        shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
       soluzione: {
-        bg: "#083833",
+        bg: "#0054a6",
         ink: "#F9FAF5",
-        border: "rgba(217,233,170,.14)",
+        border: "rgba(126,200,255,.18)",
         shadow: "0 12px 30px rgba(0,0,0,.18)",
       },
       metodo: {
         bg: "#F9FAF5",
-        ink: "#083833",
-        border: "rgba(8,56,51,.08)",
-        shadow: "0 10px 30px rgba(8,56,51,.06)",
+        ink: "#06294c",
+        border: "rgba(0,84,166,.12)",
+        shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
       educazione: {
-        bg: "#eef0e6",
-        ink: "#083833",
-        border: "rgba(8,56,51,.08)",
-        shadow: "0 10px 30px rgba(8,56,51,.06)",
+        bg: "#e8f2fc",
+        ink: "#06294c",
+        border: "rgba(0,84,166,.12)",
+        shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
       testimonianze: {
         bg: "#F9FAF5",
-        ink: "#083833",
-        border: "rgba(8,56,51,.08)",
-        shadow: "0 10px 30px rgba(8,56,51,.06)",
+        ink: "#06294c",
+        border: "rgba(0,84,166,.12)",
+        shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
       cta: {
-        bg: "#083833",
+        bg: "#0054a6",
         ink: "#F9FAF5",
-        border: "rgba(217,233,170,.14)",
+        border: "rgba(126,200,255,.18)",
         shadow: "0 12px 30px rgba(0,0,0,.18)",
       },
     };
@@ -387,7 +387,7 @@ export function useSiteMotion(
           if (pt.x < -30) pt.x = W + 20;
           if (pt.x > W + 30) pt.x = -20;
           ctx.font = `${pt.s}px ${getComputedStyle(document.body).getPropertyValue("--font-jetbrains") || "monospace"}, monospace`;
-          ctx.fillStyle = `rgba(217,233,170,${pt.a})`;
+          ctx.fillStyle = `rgba(126,200,255,${pt.a})`;
           ctx.fillText(pt.sym, pt.x, pt.y);
         });
         raf(draw);
@@ -411,7 +411,7 @@ export function useSiteMotion(
       const onClick = (e: MouseEvent) => {
         const rip = document.createElement("span");
         const r = b.getBoundingClientRect();
-        rip.style.cssText = `position:absolute; left:${e.clientX - r.left}px; top:${e.clientY - r.top}px; width:14px; height:14px; margin:-7px; border-radius:50%; background:rgba(8,56,51,.35); pointer-events:none; animation:dgRipple .7s ease-out forwards;`;
+        rip.style.cssText = `position:absolute; left:${e.clientX - r.left}px; top:${e.clientY - r.top}px; width:14px; height:14px; margin:-7px; border-radius:50%; background:rgba(0,84,166,.35); pointer-events:none; animation:dgRipple .7s ease-out forwards;`;
         b.style.position = "relative";
         b.style.overflow = "hidden";
         b.appendChild(rip);

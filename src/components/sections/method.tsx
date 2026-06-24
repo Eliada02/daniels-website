@@ -1,7 +1,7 @@
 import { steps, type Step } from "@/lib/site-config";
 
 const markerTone: Record<Step["tone"], string> = {
-  forest: "bg-forest text-sage",
+  forest: "bg-olive text-cream",
   olive: "bg-olive text-cream",
   sage: "bg-sage text-forest",
 };
@@ -81,10 +81,10 @@ export function Method() {
 
         <div data-timeline className="relative flex flex-col">
           {/* connector + animated fill — left rail on mobile, centre on desktop */}
-          <div className="absolute bottom-0 left-[24px] top-0 w-0.5 -translate-x-1/2 bg-forest/10 sm:left-[27px] md:left-1/2" />
+          <div className="absolute bottom-0 left-[24px] top-0 w-0.5 -translate-x-1/2 bg-olive/15 sm:left-[27px] md:left-1/2" />
           <div
             data-time-fill
-            className="absolute left-[24px] top-0 h-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-olive to-forest sm:left-[27px] md:left-1/2"
+            className="absolute left-[24px] top-0 h-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-olive via-olive to-forest sm:left-[27px] md:left-1/2"
           />
           {steps.map((step) => (
             <StepRow key={step.n} step={step} />

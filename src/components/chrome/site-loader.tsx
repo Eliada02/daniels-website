@@ -65,7 +65,7 @@ export function SiteLoader() {
 
   return (
     <div
-      className="dg-loader fixed inset-0 z-[500] grid place-items-center bg-forest px-5 text-cream"
+      className="dg-loader fixed inset-0 z-[500] grid place-items-center bg-olive px-5 text-cream"
       data-exiting={exiting || undefined}
       role="status"
       aria-live="polite"

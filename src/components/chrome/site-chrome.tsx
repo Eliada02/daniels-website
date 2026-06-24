@@ -6,9 +6,9 @@ export function GoldGradientDef() {
     <svg width="0" height="0" className="absolute" aria-hidden>
       <defs>
         <linearGradient id="dgGold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#D9E9AA" />
-          <stop offset="0.5" stopColor="#50772F" />
-          <stop offset="1" stopColor="#083833" />
+          <stop offset="0" stopColor="#7EC8FF" />
+          <stop offset="0.42" stopColor="#0054A6" />
+          <stop offset="1" stopColor="#06294c" />
         </linearGradient>
       </defs>
     </svg>
@@ -21,7 +21,7 @@ export function ProgressBar() {
     <div className="fixed inset-x-0 top-0 z-[200] h-1 bg-forest/10">
       <div
         data-progress
-        className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-olive to-forest"
+        className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-olive from-30% via-olive to-forest"
       />
     </div>
   );
@@ -45,7 +45,7 @@ export function Barometer() {
       </div>
       <span
         data-baro-num
-        className="font-mono text-[11px] font-medium text-forest"
+        className="font-mono text-[11px] font-medium text-olive"
       >
         0%
       </span>
@@ -65,7 +65,7 @@ export function PathRail() {
       <path
         d="M20 0 C 6 140, 34 280, 20 420 S 6 700, 20 1000"
         fill="none"
-        stroke="rgba(8,56,51,.08)"
+        stroke="rgba(0,84,166,.1)"
         strokeWidth={2}
       />
       <path

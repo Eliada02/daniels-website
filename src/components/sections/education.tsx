@@ -3,10 +3,10 @@ import { eduCards, type EduCard } from "@/lib/site-config";
 
 const toneClass: Record<EduCard["tone"], string> = {
   white:
-    "bg-white border border-forest/[0.07] shadow-[0_8px_30px_rgba(8,56,51,0.04)]",
-  forest: "bg-forest text-cream shadow-[0_12px_34px_rgba(8,56,51,0.16)]",
-  sage: "bg-sage",
-  olive: "bg-olive text-cream shadow-[0_12px_34px_rgba(80,119,47,0.22)]",
+    "bg-white border border-olive/18 shadow-[0_8px_30px_rgba(0,84,166,0.07)]",
+  forest: "bg-olive text-cream shadow-[0_12px_34px_rgba(0,84,166,0.22)]",
+  sage: "bg-sage text-forest shadow-[0_8px_30px_rgba(0,84,166,0.1)]",
+  olive: "bg-olive text-cream shadow-[0_12px_34px_rgba(0,84,166,0.22)]",
 };
 
 const kickerClass: Record<EduCard["tone"], string> = {

@@ -13,8 +13,8 @@ function Card({ t, delay, px }: { t: Testimonial; delay: number; px: string }) {
       })}
       className={`relative rounded-[10px] p-6 pt-8 sm:p-9 sm:pt-9 mt-0 ${t.offset.replace(/^mt-/, "md:mt-")} ${
         dark
-          ? "bg-forest text-cream shadow-[0_22px_60px_rgba(8,56,51,0.2)]"
-          : "border border-forest/[0.08] bg-white shadow-[0_18px_50px_rgba(8,56,51,0.07)]"
+          ? "bg-olive text-cream shadow-[0_22px_60px_rgba(0,84,166,0.28)]"
+          : "border border-olive/18 bg-gradient-to-b from-white to-mist shadow-[0_18px_50px_rgba(0,84,166,0.09)]"
       }`}
     >
       <span

@@ -18,9 +18,10 @@ export const siteConfig = {
   },
 
   nav: [
-    { href: "#problema", label: "Il problema" },
-    { href: "#soluzione", label: "La soluzione" },
-    { href: "#metodo", label: "Il metodo" },
+    { href: "/chi-sono", label: "Chi sono" },
+    { href: "/#problema", label: "Il problema" },
+    { href: "/#soluzione", label: "La soluzione" },
+    { href: "/#metodo", label: "Il metodo" },
   ],
 
   barometerLabel: "Consapevolezza finanziaria",
@@ -34,9 +35,9 @@ export const siteConfig = {
     chartBars: [
       { h: "24%", bg: "rgba(249,250,245,.22)", delay: "0.12s" },
       { h: "40%", bg: "rgba(249,250,245,.3)", delay: "0.26s" },
-      { h: "58%", bg: "#50772F", delay: "0.4s" },
-      { h: "78%", bg: "#7da34f", delay: "0.54s" },
-      { h: "100%", bg: "#D9E9AA", delay: "0.68s" },
+      { h: "58%", bg: "#0054A6", delay: "0.4s" },
+      { h: "78%", bg: "#5BA3E0", delay: "0.54s" },
+      { h: "100%", bg: "#7EC8FF", delay: "0.68s" },
     ] as const,
   },
 } as const;
@@ -236,4 +237,242 @@ export const ctaBenefits = [
   "La struttura di cessione più adatta al tuo caso",
   "Tempistiche certe di incasso, messe nero su bianco",
   "Un interlocutore umano, dall'inizio alla fine",
+];
+
+export type CvExperience = {
+  period: string;
+  role: string;
+  company: string;
+  highlights: string[];
+};
+
+export type CvEducation = {
+  period: string;
+  degree: string;
+  school: string;
+};
+
+export type CvSkillGroup = {
+  label: string;
+  items: string[];
+};
+
+export const aboutProfile = {
+  kicker: "Chi sono",
+  headline: "Consulente di finanza strutturata",
+  headlineEm: "con focus sulla liquidità",
+  summary:
+    "Da oltre quindici anni accompagno PMI, fornitori sanitari e operatori mid-market nella trasformazione dei crediti commerciali in liquidità prevedibile. Specializzato in cessione del credito pro-soluto verso la Pubblica Amministrazione, unisco competenza tecnica e un rapporto diretto con il cliente.",
+  contact: [
+    { label: "Email", value: "daniele@example.com" },
+    { label: "Telefono", value: "+39 000 000 0000" },
+    { label: "Sede", value: "Milano, Italia" },
+    { label: "LinkedIn", value: "linkedin.com/in/danieledigiorgio" },
+  ],
+  languages: [
+    { lang: "Italiano", level: "Madrelingua" },
+    { lang: "Inglese", level: "Professionale (C1)" },
+    { lang: "Francese", level: "Intermedio (B2)" },
+  ],
+} as const;
+
+export const aboutExperience: CvExperience[] = [
+  {
+    period: "2018 — oggi",
+    role: "Consulente indipendente",
+    company: "Finanza strutturata · Cessione del credito",
+    highlights: [
+      "Strutturazione di operazioni pro-soluto su crediti verso PA e sanità per oltre €45M di volume annuo.",
+      "Due diligence amministrativa e negoziazione con factor e istituti di credito specializzati.",
+      "Affiancamento diretto di CFO e imprenditori nella pianificazione della liquidità.",
+    ],
+  },
+  {
+    period: "2012 — 2018",
+    role: "Senior Structured Finance",
+    company: "Banca di investimento · Team crediti commerciali",
+    highlights: [
+      "Origination e closing di operazioni di factoring e cessione su portafogli corporate.",
+      "Sviluppo di modelli di pricing e analisi del rischio di insolvenza del debitore ceduto.",
+      "Coordinamento legale e fiscale su strutture cross-border in ambito UE.",
+    ],
+  },
+  {
+    period: "2008 — 2012",
+    role: "Analista finanziario",
+    company: "Società di consulenza · Corporate finance",
+    highlights: [
+      "Valutazioni d'impresa e supporto a operazioni di M&A per PMI industriali.",
+      "Analisi di bilancio e cash flow forecasting per mandati di advisory.",
+    ],
+  },
+];
+
+export const aboutEducation: CvEducation[] = [
+  {
+    period: "2006 — 2008",
+    degree: "Laurea magistrale in Economia e Management",
+    school: "Università Bocconi, Milano",
+  },
+  {
+    period: "2003 — 2006",
+    degree: "Laurea triennale in Economia Aziendale",
+    school: "Università degli Studi di Milano",
+  },
+];
+
+export const aboutSkills: CvSkillGroup[] = [
+  {
+    label: "Specializzazioni",
+    items: [
+      "Cessione del credito pro-soluto",
+      "Crediti verso PA e sanità",
+      "Factoring strutturato",
+      "Due diligence amministrativa",
+    ],
+  },
+  {
+    label: "Competenze tecniche",
+    items: [
+      "Analisi di bilancio e cash flow",
+      "Pricing e strutturazione deal",
+      "Normativa creditizia italiana",
+      "Reporting e monitoraggio incassi",
+    ],
+  },
+  {
+    label: "Certificazioni",
+    items: [
+      "CFA Level II (in corso)",
+      "Certificazione OCF · Intermediari finanziari",
+    ],
+  },
+];
+
+/* ============================================================
+   "Chi sono" — dedicated CV / timeline route (/chi-sono).
+   Infographic résumé layout; primary accent is #0054A6 (the
+   `olive` brand token). Edit all copy here.
+   ============================================================ */
+
+/** Icon keys resolved by the inline icon set in about-cv.tsx. */
+export type CvIcon =
+  | "mail"
+  | "phone"
+  | "pin"
+  | "globe"
+  | "flag"
+  | "cap"
+  | "chart"
+  | "briefcase"
+  | "users"
+  | "star"
+  | "clock"
+  | "check"
+  | "rocket"
+  | "award";
+
+export const aboutHero = {
+  role: "Consulente di Finanza Strutturata",
+  summary:
+    "Aiuto aziende e professionisti a trasformare i crediti commerciali bloccati in liquidità prevedibile — con strutture su misura, trasparenti e orientate ai risultati.",
+  /** Contact row; icon keys map onto the inline icon set. */
+  contact: [
+    { icon: "mail" as CvIcon, value: "daniele@example.com", href: "mailto:daniele@example.com" },
+    { icon: "phone" as CvIcon, value: "+39 000 000 0000", href: "tel:+390000000000" },
+    { icon: "pin" as CvIcon, value: "Milano, Italia", href: null },
+    { icon: "globe" as CvIcon, value: "danieledigiorgio.it", href: "https://danieledigiorgio.it" },
+  ],
+} as const;
+
+export type CvCompetenza = { label: string; value: number };
+
+export const aboutCompetenze: CvCompetenza[] = [
+  { label: "Cessione del credito", value: 95 },
+  { label: "Crediti PA & sanità", value: 92 },
+  { label: "Factoring strutturato", value: 86 },
+  { label: "Due diligence", value: 80 },
+  { label: "Analisi di bilancio", value: 90 },
+  { label: "Pricing & strutturazione", value: 84 },
+  { label: "Risk management", value: 78 },
+  { label: "Negoziazione", value: 88 },
+];
+
+export type CvMilestone = {
+  period: string;
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+  body: string;
+  icon: CvIcon;
+  variant?: "start" | "goal";
+};
+
+export const aboutTimeline: CvMilestone[] = [
+  {
+    variant: "start",
+    kicker: "Partenza",
+    period: "2003 — 2006",
+    title: "Formazione",
+    body: "Laurea in Economia Aziendale e primi passi nel mondo della finanza d'impresa.",
+    icon: "flag",
+  },
+  {
+    period: "2006 — 2008",
+    title: "Laurea Magistrale",
+    subtitle: "Università Bocconi",
+    body: "Specializzazione in Economia e Management, con focus sul corporate finance.",
+    icon: "cap",
+  },
+  {
+    period: "2008 — 2012",
+    title: "Analista Finanziario",
+    subtitle: "Società di consulenza",
+    body: "Valutazioni d'impresa e supporto a operazioni di M&A per PMI industriali.",
+    icon: "chart",
+  },
+  {
+    period: "2012 — 2018",
+    title: "Senior Structured Finance",
+    subtitle: "Banca d'investimento",
+    body: "Origination e closing di operazioni di factoring e cessione su portafogli corporate.",
+    icon: "briefcase",
+  },
+  {
+    period: "2018 — oggi",
+    title: "Consulente Indipendente",
+    subtitle: "Finanza strutturata",
+    body: "Strutturazione di operazioni pro-soluto su crediti verso PA e sanità.",
+    icon: "users",
+  },
+  {
+    variant: "goal",
+    kicker: "Prossima destinazione",
+    period: "Domani",
+    title: "Crescita",
+    body: "Trasformare crediti bloccati in liquidità e crescita reale per le imprese italiane.",
+    icon: "star",
+  },
+];
+
+export const aboutFormazione = {
+  degree: "Laurea Magistrale in Economia e Management",
+  school: "Università Bocconi, Milano",
+  period: "2006 — 2008",
+};
+
+export const aboutCertificazioni: string[] = [
+  "CFA Level II — in corso",
+  "OCF — Albo intermediari finanziari",
+  "AIFI — Private Debt & Direct Lending",
+  "Specializzazione Cessione Pro-Soluto",
+];
+
+export type CvStat = { value: string; suffix: string; label: string; icon: CvIcon };
+
+export const aboutStats: CvStat[] = [
+  { value: "15", suffix: "+", label: "Anni di esperienza", icon: "clock" },
+  { value: "200", suffix: "+", label: "Operazioni strutturate", icon: "check" },
+  { value: "45", suffix: "M€", label: "Volume medio annuo", icon: "chart" },
+  { value: "1", suffix: "", label: "Missione: la tua liquidità", icon: "rocket" },
 ];

@@ -9,12 +9,12 @@ import type { CSSProperties } from "react";
  */
 
 const WOOD_FRONT =
-  "linear-gradient(180deg,#0f4d45 0%,#0a3833 55%,#072a26 100%), repeating-linear-gradient(90deg,rgba(0,0,0,.22) 0 1px,transparent 1px 24px)";
+  "linear-gradient(180deg,#0068c4 0%,#06294c 55%,#003366 100%), repeating-linear-gradient(90deg,rgba(0,0,0,.22) 0 1px,transparent 1px 24px)";
 const WOOD_SIDE =
-  "linear-gradient(180deg,#0a3a34 0%,#062521 100%), repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,transparent 1px 22px)";
-const WOOD_DARK = "linear-gradient(180deg,#0a3833,#051f1c)";
+  "linear-gradient(180deg,#004d8f 0%,#003366 100%), repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 1px,transparent 1px 22px)";
+const WOOD_DARK = "linear-gradient(180deg,#06294c,#002d5c)";
 const METAL =
-  "linear-gradient(180deg,#eaf5c6 0%,#cfe39a 45%,#86a94e 100%)";
+  "linear-gradient(180deg,#e8f4ff 0%,#7ec8ff 45%,#0054A6 100%)";
 
 type FaceProps = {
   w: number;
@@ -144,7 +144,7 @@ export function TreasureChest() {
             transform={`rotateX(90deg) translateZ(${H / 2 - 6}px)`}
             style={{
               background:
-                "radial-gradient(ellipse at center,#f6e9a8,#cfe39a 45%,#3c5a2a 100%)",
+                "radial-gradient(ellipse at center,#7ec8ff,#0054A6 45%,#003366 100%)",
             }}
           />
           {/* front */}
@@ -164,16 +164,16 @@ export function TreasureChest() {
                 transform: "translate(-50%,-50%)",
                 borderRadius: 6,
                 background: METAL,
-                boxShadow: "inset 0 0 6px rgba(0,0,0,.3), 0 0 10px rgba(217,233,170,.35)",
+                boxShadow: "inset 0 0 6px rgba(0,0,0,.3), 0 0 10px rgba(0,84,166,.35)",
               }}
             >
               {/* keyhole */}
-              <div style={{ position: "absolute", left: "50%", top: 12, width: 8, height: 8, borderRadius: "50%", background: "#0a3833", transform: "translateX(-50%)" }} />
-              <div style={{ position: "absolute", left: "50%", top: 18, width: 4, height: 12, background: "#0a3833", transform: "translateX(-50%)" }} />
+              <div style={{ position: "absolute", left: "50%", top: 12, width: 8, height: 8, borderRadius: "50%", background: "#06294c", transform: "translateX(-50%)" }} />
+              <div style={{ position: "absolute", left: "50%", top: 18, width: 4, height: 12, background: "#06294c", transform: "translateX(-50%)" }} />
             </div>
             {/* rivets */}
             {[ [22, 10], [22, H - 14], [W - 26, 10], [W - 26, H - 14] ].map(([l, t], i) => (
-              <span key={i} style={{ position: "absolute", left: l, top: t, width: 5, height: 5, borderRadius: "50%", background: "#eaf5c6", boxShadow: "0 0 3px rgba(0,0,0,.4)" }} />
+              <span key={i} style={{ position: "absolute", left: l, top: t, width: 5, height: 5, borderRadius: "50%", background: "#e8f4ff", boxShadow: "0 0 3px rgba(0,0,0,.4)" }} />
             ))}
           </Face>
 
@@ -187,7 +187,7 @@ export function TreasureChest() {
               height: 150,
               borderRadius: "50%",
               background:
-                "radial-gradient(circle,rgba(246,233,168,.95),rgba(217,233,170,.4) 45%,rgba(217,233,170,0) 72%)",
+                "radial-gradient(circle,rgba(126,200,255,.95),rgba(0,84,166,.4) 45%,rgba(126,200,255,0) 72%)",
               filter: "blur(4px)",
               transform: "translate(-50%,-50%) translateY(-52px) scale(0.6)",
             }}
@@ -232,7 +232,7 @@ export function TreasureChest() {
                     height: "100%",
                     borderRadius: "50%",
                     background:
-                      "radial-gradient(circle at 32% 28%,#fff9e8,#f2e6a8 38%,#c9d882 68%,#8fa854 100%)",
+                      "radial-gradient(circle at 32% 28%,#fff9e8,#f2e6a8 38%,#e8d080 68%,#c9a840 100%)",
                     border: "2px solid #d4c47a",
                     boxShadow:
                       "0 3px 8px rgba(0,0,0,.35), inset 0 -3px 4px rgba(0,0,0,.18), inset 0 2px 3px rgba(255,255,255,.45)",
@@ -282,10 +282,10 @@ export function TreasureChest() {
                       fontFamily: "var(--font-jetbrains), monospace",
                       fontSize: 13,
                       fontWeight: 700,
-                      color: "#0a3833",
+                      color: "#06294c",
                       background:
-                        "linear-gradient(135deg,#eaf5c6,#cfe39a 55%,#a9cf72)",
-                      border: "1px solid rgba(10,56,51,.35)",
+                        "linear-gradient(135deg,#e8f4ff,#7ec8ff 55%,#0054A6)",
+                      border: "1px solid rgba(0,84,166,.35)",
                       boxShadow: "0 3px 7px rgba(0,0,0,.3)",
                       "--br": b.br,
                     } as CSSProperties
