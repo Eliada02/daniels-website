@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { cssVars } from "@/lib/css";
 import { siteConfig } from "@/lib/site-config";
+
+// Run before paint on the client; fall back to useEffect on the server so
+// Next.js doesn't warn about useLayoutEffect during SSR.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /**
  * Fixed top navigation. The motion engine drives the per-section ink colour
@@ -13,6 +18,16 @@ import { siteConfig } from "@/lib/site-config";
  */
 export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
   const [open, setOpen] = useState(false);
+
+  // The motion engine recolours the nav (background / blur / ink) from its
+  // own scroll/resize/250ms-interval loop. Without this nudge a freshly
+  // toggled menu kept the previous section's theme — often light — painted
+  // across the full-screen panel for a frame before flipping to the dark
+  // menu theme, which read as a blink. Dispatching here (pre-paint) makes the
+  // engine recompute the theme synchronously on every open/close.
+  useIsomorphicLayoutEffect(() => {
+    window.dispatchEvent(new Event("scroll"));
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
