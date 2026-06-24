@@ -2,7 +2,7 @@ import { reveal } from "@/lib/css";
 import { TreasureChest } from "@/components/hero/treasure-chest";
 
 const floatChip =
-  "absolute z-[3] hidden whitespace-nowrap rounded-full border border-olive/35 bg-olive/12 px-3.5 py-2 font-mono text-[13px] text-sage backdrop-blur-sm xl:block";
+  "absolute z-[3] hidden whitespace-nowrap rounded-full border border-cream/25 bg-cream/[0.08] px-3.5 py-2 font-mono text-[13px] text-sage backdrop-blur-sm xl:block";
 
 // Positioned in the empty outer gutters so they frame the composition
 // without ever sitting on top of the headline or portrait.
@@ -24,11 +24,11 @@ export function Hero() {
       {/* geometric background rings */}
       <div
         data-px="0.12"
-        className="pointer-events-none absolute -right-[60px] -top-10 z-[1] h-[280px] w-[280px] rounded-full border border-olive/25 sm:-right-[120px] sm:-top-20 sm:h-[560px] sm:w-[560px]"
+        className="pointer-events-none absolute -right-[60px] -top-10 z-[1] h-[280px] w-[280px] rounded-full border border-cream/20 sm:-right-[120px] sm:-top-20 sm:h-[560px] sm:w-[560px]"
       />
       <div
         data-px="0.2"
-        className="pointer-events-none absolute -bottom-24 right-8 z-[1] h-[200px] w-[200px] rounded-full border border-olive/18 sm:-bottom-40 sm:right-[120px] sm:h-[360px] sm:w-[360px]"
+        className="pointer-events-none absolute -bottom-24 right-8 z-[1] h-[200px] w-[200px] rounded-full border border-cream/15 sm:-bottom-40 sm:right-[120px] sm:h-[360px] sm:w-[360px]"
       />
 
       {/* floating value chips (wide screens only, in the side gutters) */}
@@ -50,7 +50,7 @@ export function Hero() {
             data-reveal
             className="mb-5 inline-flex max-w-full flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.18em] text-sage sm:mb-6 sm:text-xs sm:tracking-[0.22em]"
           >
-            <span className="h-px w-6 shrink-0 bg-olive sm:w-[30px]" />
+            <span className="h-px w-6 shrink-0 bg-sage sm:w-[30px]" />
             Finanza strutturata · Cessione del credito
           </span>
           <h1
@@ -83,7 +83,7 @@ export function Hero() {
             <a
               href="#cta"
               data-breathe
-              className="rounded-full bg-olive px-7 py-3.5 text-[14px] font-bold tracking-[0.01em] text-cream no-underline shadow-[0_8px_28px_rgba(0,84,166,0.38)] transition-colors hover:bg-olive-dark sm:px-8 sm:py-4 sm:text-[15px]"
+              className="rounded-full bg-cream px-7 py-3.5 text-[14px] font-bold tracking-[0.01em] text-olive no-underline shadow-[0_8px_28px_rgba(0,0,0,0.22)] transition-colors hover:bg-sage sm:px-8 sm:py-4 sm:text-[15px]"
             >
               Prenota una consulenza
             </a>

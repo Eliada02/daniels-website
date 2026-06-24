@@ -1,6 +1,14 @@
 import { cssVars } from "@/lib/css";
 import { testimonials, type Testimonial } from "@/lib/site-config";
 
+// Literal md: classes so Tailwind's scanner emits them — a runtime-built
+// string (e.g. offset.replace(...)) would never appear in the CSS bundle.
+const offsetClass: Record<string, string> = {
+  "mt-0": "md:mt-0",
+  "mt-5": "md:mt-5",
+  "mt-9": "md:mt-9",
+};
+
 function Card({ t, delay, px }: { t: Testimonial; delay: number; px: string }) {
   const dark = t.tone === "forest";
   return (
@@ -11,7 +19,7 @@ function Card({ t, delay, px }: { t: Testimonial; delay: number; px: string }) {
         "--tilt-base": `rotate(${t.rotate})`,
         "--reveal-delay": `${delay}s`,
       })}
-      className={`relative rounded-[10px] p-6 pt-8 sm:p-9 sm:pt-9 mt-0 ${t.offset.replace(/^mt-/, "md:mt-")} ${
+      className={`relative rounded-[10px] p-6 pt-8 sm:p-9 sm:pt-9 mt-0 ${offsetClass[t.offset] ?? ""} ${
         dark
           ? "bg-olive text-cream shadow-[0_22px_60px_rgba(0,84,166,0.28)]"
           : "border border-olive/18 bg-gradient-to-b from-white to-mist shadow-[0_18px_50px_rgba(0,84,166,0.09)]"

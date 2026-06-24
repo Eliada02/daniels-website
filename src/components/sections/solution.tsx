@@ -4,7 +4,7 @@ import { solutionAre, solutionNot, solutionFeatures } from "@/lib/site-config";
 const bars = [
   { h: "24%", bg: "rgba(249,250,245,.2)", delay: "0s" },
   { h: "40%", bg: "rgba(249,250,245,.28)", delay: ".12s" },
-  { h: "58%", bg: "#0054A6", delay: ".24s" },
+  { h: "58%", bg: "#3A8FD6", delay: ".24s" },
   { h: "78%", bg: "#5BA3E0", delay: ".36s" },
   { h: "100%", bg: "#7EC8FF", delay: ".48s" },
 ];
@@ -69,7 +69,7 @@ export function Solution() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-lg border border-olive/40 bg-olive/12 p-6">
+            <div className="rounded-lg border border-sage/40 bg-sage/[0.1] p-6">
               <span className="font-mono text-[11px] tracking-[0.2em] text-sage">
                 SIAMO
               </span>
@@ -115,7 +115,7 @@ export function Solution() {
             </div>
           </div>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:gap-3.5">
-            <div className="flex-1 rounded-lg border border-olive/35 bg-olive/12 p-4 sm:p-[18px]">
+            <div className="flex-1 rounded-lg border border-cream/20 bg-cream/[0.07] p-4 sm:p-[18px]">
               <div className="font-serif text-[clamp(28px,8vw,38px)] font-bold text-sage">
                 <span data-count data-from="0" data-to="100" data-suffix="%">
                   0%
@@ -125,7 +125,7 @@ export function Solution() {
                 rischio trasferito (pro-soluto)
               </div>
             </div>
-            <div className="flex-1 rounded-lg border border-olive/35 bg-olive/12 p-4 sm:p-[18px]">
+            <div className="flex-1 rounded-lg border border-cream/20 bg-cream/[0.07] p-4 sm:p-[18px]">
               <div className="font-serif text-[clamp(28px,8vw,38px)] font-bold text-sage">
                 <span data-count data-from="360" data-to="0" data-suffix="gg">
                   360gg
@@ -146,7 +146,7 @@ export function Solution() {
             key={f.n}
             data-reveal
             style={reveal(i * 0.1)}
-            className="border-t border-olive/40 pt-[22px]"
+            className="border-t border-cream/25 pt-[22px]"
           >
             <span className="font-mono text-[13px] text-sage">{f.n}</span>
             <h4 className="mt-2 font-serif text-2xl font-semibold">{f.title}</h4>

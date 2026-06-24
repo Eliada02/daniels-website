@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ChiSonoPage() {
   return (
     <>
-      <SiteNav />
+      <SiteNav solid />
       <main className="min-h-screen bg-cream pt-[64px] sm:pt-[68px]">
         <AboutCv />
 

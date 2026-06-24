@@ -64,7 +64,7 @@ export function Cta() {
             <a
               href="#hero"
               data-breathe
-              className="rounded-full bg-olive px-9 py-[17px] text-base font-bold text-cream no-underline shadow-[0_8px_28px_rgba(0,84,166,0.38)] transition-colors hover:bg-olive-dark"
+              className="rounded-full bg-cream px-9 py-[17px] text-base font-bold text-olive no-underline shadow-[0_8px_28px_rgba(0,0,0,0.22)] transition-colors hover:bg-sage"
             >
               Prenota una consulenza
             </a>
@@ -78,7 +78,7 @@ export function Cta() {
         </div>
 
         <div data-reveal style={reveal(0.15)}>
-          <div className="rounded-xl border border-olive/40 bg-olive/15 p-6 backdrop-blur-md sm:p-[34px]">
+          <div className="rounded-xl border border-cream/20 bg-cream/[0.07] p-6 backdrop-blur-md sm:p-[34px]">
             <div className="font-serif text-[clamp(22px,5vw,26px)] font-semibold text-sage">
               Cosa otterrai
             </div>

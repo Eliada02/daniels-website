@@ -43,7 +43,12 @@ export function useSiteMotion(
     const cleanups: Array<() => void> = [];
     const rafIds = new Set<number>();
     const raf = (cb: FrameRequestCallback) => {
-      const id = requestAnimationFrame(cb);
+      // Self-removing id: continuous loops (particles, counters) would
+      // otherwise grow `rafIds` without bound for the life of the page.
+      const id = requestAnimationFrame((t) => {
+        rafIds.delete(id);
+        cb(t);
+      });
       rafIds.add(id);
       return id;
     };
@@ -156,28 +161,25 @@ export function useSiteMotion(
 
     type NavSectionId = (typeof NAV_SECTIONS)[number];
 
+    const NAV_OLIVE_THEME = {
+      bg: "#0054a6",
+      ink: "#F9FAF5",
+      border: "rgba(126,200,255,.18)",
+      shadow: "0 12px 30px rgba(0,0,0,.18)",
+    };
+
     const NAV_THEME: Record<
       NavSectionId,
       { bg: string; ink: string; border: string; shadow: string }
     > = {
-      hero: {
-        bg: "#0054a6",
-        ink: "#F9FAF5",
-        border: "rgba(126,200,255,.18)",
-        shadow: "0 12px 30px rgba(0,0,0,.18)",
-      },
+      hero: NAV_OLIVE_THEME,
       problema: {
         bg: "#F9FAF5",
         ink: "#06294c",
         border: "rgba(0,84,166,.12)",
         shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
-      soluzione: {
-        bg: "#0054a6",
-        ink: "#F9FAF5",
-        border: "rgba(126,200,255,.18)",
-        shadow: "0 12px 30px rgba(0,0,0,.18)",
-      },
+      soluzione: NAV_OLIVE_THEME,
       metodo: {
         bg: "#F9FAF5",
         ink: "#06294c",
@@ -196,12 +198,12 @@ export function useSiteMotion(
         border: "rgba(0,84,166,.12)",
         shadow: "0 10px 30px rgba(0,84,166,.07)",
       },
-      cta: {
-        bg: "#0054a6",
-        ink: "#F9FAF5",
-        border: "rgba(126,200,255,.18)",
-        shadow: "0 12px 30px rgba(0,0,0,.18)",
-      },
+      cta: NAV_OLIVE_THEME,
+    };
+
+    const NAV_MENU_THEME = {
+      ...NAV_OLIVE_THEME,
+      shadow: "none",
     };
 
     const sectionUnderNav = (probeY: number): NavSectionId => {
@@ -280,33 +282,39 @@ export function useSiteMotion(
       const menuOpen = nav?.hasAttribute("data-menu-open");
       const heroImmersive =
         activeSection === "hero" && sy < 48 && !menuOpen;
+      const isMobileNav =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(max-width: 767px)").matches;
+      const theme = menuOpen
+        ? NAV_MENU_THEME
+        : isMobileNav && !heroImmersive
+          ? NAV_OLIVE_THEME
+          : navTheme;
 
       [navLogo, navLinks].forEach((n) => {
-        if (n) n.style.color = navTheme.ink;
+        if (n) n.style.color = theme.ink;
       });
       if (nav) {
-        nav.style.color = navTheme.ink;
+        nav.style.color = theme.ink;
         if (heroImmersive) {
           nav.style.background = "transparent";
           nav.style.borderBottom = "1px solid transparent";
           nav.style.boxShadow = "none";
           nav.style.backdropFilter = "none";
         } else {
-          nav.style.background = navTheme.bg;
-          nav.style.borderBottom = `1px solid ${navTheme.border}`;
-          nav.style.boxShadow = navTheme.shadow;
+          nav.style.background = theme.bg;
+          nav.style.borderBottom = `1px solid ${theme.border}`;
+          nav.style.boxShadow = theme.shadow;
           nav.style.backdropFilter = menuOpen
-            ? "saturate(140%) blur(14px)"
+            ? "saturate(160%) blur(20px)"
             : "none";
         }
       }
       if (navPanel) {
-        navPanel.style.background = navTheme.bg;
-        navPanel.style.color = navTheme.ink;
-        navPanel.style.borderBottomColor = navTheme.border;
-        navPanel.style.backdropFilter = menuOpen
-          ? "saturate(150%) blur(18px)"
-          : "none";
+        navPanel.style.background = menuOpen ? "transparent" : theme.bg;
+        navPanel.style.color = theme.ink;
+        navPanel.style.borderBottomColor = theme.border;
+        navPanel.style.backdropFilter = "none";
       }
 
       ticking = false;
@@ -344,15 +352,25 @@ export function useSiteMotion(
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       };
       resize();
-      const parts = Array.from({ length: count }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vy: -(0.12 + Math.random() * 0.4),
-        vx: (Math.random() - 0.5) * 0.2,
-        s: 11 + Math.random() * 18,
-        a: 0.08 + Math.random() * 0.22,
-        sym: syms[(Math.random() * syms.length) | 0],
-      }));
+      // Resolve the mono font family ONCE — reading it per-particle per-frame
+      // via getComputedStyle forced thousands of style recalcs per second.
+      const fontFamily = (
+        getComputedStyle(document.body).getPropertyValue("--font-jetbrains") ||
+        "monospace"
+      ).trim();
+      const parts = Array.from({ length: count }, () => {
+        const s = 11 + Math.random() * 18;
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vy: -(0.12 + Math.random() * 0.4),
+          vx: (Math.random() - 0.5) * 0.2,
+          s,
+          a: 0.08 + Math.random() * 0.22,
+          sym: syms[(Math.random() * syms.length) | 0],
+          font: `${s}px ${fontFamily}, monospace`,
+        };
+      });
       const onMove = (e: MouseEvent) => {
         const r = canvas.getBoundingClientRect();
         mouse.x = e.clientX - r.left;
@@ -365,9 +383,18 @@ export function useSiteMotion(
       canvas.addEventListener("mousemove", onMove);
       canvas.addEventListener("mouseleave", onLeave);
       window.addEventListener("resize", resize);
+
+      // Only animate while on-screen AND the tab is visible — three always-on
+      // rAF loops otherwise burn CPU/GPU even when scrolled far away.
       let alive = true;
+      let looping = false;
+      let onScreen = true;
       const draw = () => {
-        if (!alive) return;
+        if (!alive || !looping) return;
+        if (document.hidden || !onScreen) {
+          looping = false;
+          return;
+        }
         ctx.clearRect(0, 0, W, H);
         parts.forEach((pt) => {
           const dx = pt.x - mouse.x;
@@ -386,15 +413,35 @@ export function useSiteMotion(
           }
           if (pt.x < -30) pt.x = W + 20;
           if (pt.x > W + 30) pt.x = -20;
-          ctx.font = `${pt.s}px ${getComputedStyle(document.body).getPropertyValue("--font-jetbrains") || "monospace"}, monospace`;
+          ctx.font = pt.font;
           ctx.fillStyle = `rgba(126,200,255,${pt.a})`;
           ctx.fillText(pt.sym, pt.x, pt.y);
         });
         raf(draw);
       };
-      draw();
+      const startLoop = () => {
+        if (alive && !looping && onScreen && !document.hidden) {
+          looping = true;
+          draw();
+        }
+      };
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          onScreen = entry.isIntersecting;
+          if (onScreen) startLoop();
+        },
+        { threshold: 0 },
+      );
+      io.observe(canvas);
+      const onVisibility = () => {
+        if (!document.hidden) startLoop();
+      };
+      document.addEventListener("visibilitychange", onVisibility);
+      startLoop();
       cleanups.push(() => {
         alive = false;
+        io.disconnect();
+        document.removeEventListener("visibilitychange", onVisibility);
         canvas.removeEventListener("mousemove", onMove);
         canvas.removeEventListener("mouseleave", onLeave);
         window.removeEventListener("resize", resize);
@@ -421,8 +468,11 @@ export function useSiteMotion(
       cleanups.push(() => b.removeEventListener("click", onClick));
     });
 
-    // safety net for environments where scroll events are throttled
-    const engineTimer = window.setInterval(onScroll, 250);
+    // safety net for environments where scroll events are throttled; skip the
+    // layout-reading pass entirely while the tab is hidden.
+    const engineTimer = window.setInterval(() => {
+      if (!document.hidden) onScroll();
+    }, 250);
 
     return () => {
       cleanups.forEach((fn) => fn());
