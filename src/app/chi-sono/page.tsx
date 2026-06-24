@@ -13,7 +13,7 @@ export default function ChiSonoPage() {
   return (
     <>
       <SiteNav solid />
-      <main className="min-h-screen bg-cream pt-[64px] sm:pt-[68px]">
+      <main className="min-h-screen bg-cream pt-[calc(env(safe-area-inset-top)+3.75rem)] sm:pt-[calc(env(safe-area-inset-top)+4.25rem)]">
         <AboutCv />
 
         <div className="mx-auto max-w-[1180px] px-5 pb-16 sm:px-10">

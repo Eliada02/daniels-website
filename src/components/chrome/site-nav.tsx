@@ -40,8 +40,8 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
       } ${open ? "flex min-h-dvh flex-col" : ""}`}
     >
       <div
-        className={`relative z-[2] mx-auto flex w-full max-w-[1280px] shrink-0 items-center justify-between px-5 sm:px-10 ${
-          open ? "border-b border-current/10 py-4" : "py-3 sm:py-3.5"
+        className={`relative z-[2] mx-auto flex w-full max-w-[1280px] shrink-0 items-center justify-between gap-3 px-4 sm:px-10 ${
+          open ? "border-b border-current/10 py-3.5 sm:py-4" : "py-3 sm:py-3.5"
         }`}
       >
         {/* logo + monogram */}
@@ -49,15 +49,12 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
           href="/"
           data-nav-logo
           onClick={() => setOpen(false)}
-          className="group flex min-w-0 items-center gap-2.5 text-inherit no-underline transition-colors duration-300 sm:gap-3"
+          className="group flex min-w-0 shrink items-center gap-2.5 text-inherit no-underline transition-colors duration-300 sm:gap-3"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-md border border-current/30 font-serif text-[17px] font-bold leading-none shadow-[inset_0_1px_0_rgba(249,250,245,0.08)] transition-colors duration-300 group-hover:border-current/70">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-current/30 font-serif text-[17px] font-bold leading-none shadow-[inset_0_1px_0_rgba(249,250,245,0.08)] transition-colors duration-300 group-hover:border-current/70">
             {siteConfig.brand.initials}
           </span>
-          <span className="max-w-[9.5rem] truncate font-serif text-[10px] uppercase tracking-[0.22em] opacity-85 sm:hidden">
-            {siteConfig.brand.name}
-          </span>
-          <span className="hidden font-serif text-[12px] uppercase tracking-[0.32em] opacity-85 sm:block">
+          <span className="hidden min-w-0 truncate font-serif text-[11px] uppercase tracking-[0.28em] opacity-85 min-[400px]:block sm:text-[12px] sm:tracking-[0.32em]">
             {siteConfig.brand.name}
           </span>
         </Link>
@@ -92,13 +89,13 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
           aria-expanded={open}
           aria-controls="mobile-nav-panel"
           onClick={() => setOpen((v) => !v)}
-          className={`dg-nav-mobile-toggle relative flex items-center gap-2.5 rounded-full border transition-all duration-300 ease-out md:hidden ${
+          className={`dg-nav-mobile-toggle relative grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-all duration-300 ease-out md:hidden ${
             open
-              ? "border-cream/15 bg-cream/[0.06] px-3.5 py-2"
-              : "border-current/15 bg-current/[0.05] px-3 py-2 hover:border-current/25 hover:bg-current/[0.08]"
+              ? "border-cream/15 bg-cream/[0.06]"
+              : "border-current/15 bg-current/[0.05] hover:border-current/25 hover:bg-current/[0.08]"
           }`}
         >
-          <span className="relative grid h-5 w-5 shrink-0 place-items-center">
+          <span className="relative grid h-5 w-5 place-items-center">
             <span
               className={`absolute left-1/2 h-[1.5px] w-[15px] -translate-x-1/2 rounded-full bg-current transition-all duration-300 ease-out ${
                 open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-[calc(50%-4px)]"
@@ -115,9 +112,6 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
               }`}
             />
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
-            {open ? "Chiudi" : "Menu"}
-          </span>
         </button>
       </div>
 
@@ -128,8 +122,8 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
         data-open={open || undefined}
         className={`dg-nav-mobile-panel relative z-[2] md:hidden ${open ? "flex-1" : ""}`}
       >
-        <div className="dg-nav-mobile-panel-inner overflow-hidden">
-          <div className="relative flex min-h-full flex-1 flex-col">
+        <div className="dg-nav-mobile-panel-inner">
+          <div className="relative flex min-h-min flex-col">
             {/* ambient decor */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
               <div className="dg-nav-mobile-decor-glow absolute -right-16 top-[12%] h-56 w-56 rounded-full bg-sage/10 blur-3xl" />
@@ -150,23 +144,23 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
               </div>
             </div>
 
-            <div className="relative flex min-h-full flex-1 flex-col px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-2 sm:px-8">
-              <div className="dg-nav-mobile-intro mt-5 max-w-[18rem]">
+            <div className="relative flex flex-col px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-1 sm:px-8 sm:pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pt-2">
+              <div className="dg-nav-mobile-intro mt-3 max-w-[18rem] sm:mt-5">
                 <span className="inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.28em] text-sage/75">
                   <span className="h-px w-5 bg-sage/50" />
                   Menu
                 </span>
-                <p className="mt-4 font-serif text-[clamp(24px,6.5vw,34px)] font-medium leading-[1.12] tracking-[-0.02em] text-cream/92">
+                <p className="mt-3 font-serif text-[clamp(22px,5.5vw,34px)] font-medium leading-[1.12] tracking-[-0.02em] text-cream/92 sm:mt-4">
                   Naviga il percorso verso la liquidità.
                 </p>
-                <p className="mt-3 text-[13.5px] leading-[1.55] text-cream/50">
+                <p className="dg-nav-mobile-intro-desc mt-2 text-[13px] leading-[1.5] text-cream/50 sm:mt-3 sm:text-[13.5px] sm:leading-[1.55]">
                   {siteConfig.brand.tagline}
                 </p>
               </div>
 
               <nav
                 aria-label="Navigazione principale"
-                className="my-8 flex flex-1 flex-col justify-center"
+                className="my-5 flex flex-col sm:my-8"
               >
                 {siteConfig.nav.map((item, i) => (
                   <Link
@@ -174,23 +168,23 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     style={cssVars({ "--nav-i": i })}
-                    className="dg-nav-mobile-link group relative block border-b border-cream/[0.08] py-5 no-underline transition-colors active:bg-cream/[0.04] sm:py-[22px]"
+                    className="dg-nav-mobile-link group relative block border-b border-cream/[0.08] py-3.5 no-underline transition-colors active:bg-cream/[0.04] sm:py-5"
                   >
-                    <div className="flex items-start justify-between gap-4 pr-1">
-                      <div className="min-w-0">
+                    <div className="flex items-center justify-between gap-3 pr-0.5 sm:items-start sm:gap-4 sm:pr-1">
+                      <div className="min-w-0 flex-1">
                         <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sage/55">
                           0{i + 1}
                         </span>
-                        <span className="mt-2 block font-serif text-[clamp(28px,7.5vw,40px)] font-semibold leading-[1.02] tracking-[-0.02em]">
+                        <span className="mt-1.5 block font-serif text-[clamp(22px,6vw,40px)] font-semibold leading-[1.05] tracking-[-0.02em] sm:mt-2 sm:leading-[1.02]">
                           {item.label}
                         </span>
-                        <span className="mt-2 block text-[13px] leading-snug text-cream/45">
+                        <span className="dg-nav-mobile-link-hint mt-1.5 block text-[12.5px] leading-snug text-cream/45 sm:mt-2 sm:text-[13px]">
                           {item.hint}
                         </span>
                       </div>
                       <span
                         aria-hidden
-                        className="mt-5 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/[0.04] text-sm text-sage/70 transition-all duration-300 group-active:border-sage/35 group-active:bg-sage/10 group-active:text-sage"
+                        className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/[0.04] text-sm text-sage/70 transition-all duration-300 group-active:border-sage/35 group-active:bg-sage/10 group-active:text-sage sm:mt-5 sm:h-10 sm:w-10"
                       >
                         →
                       </span>
@@ -199,7 +193,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
                 ))}
               </nav>
 
-              <div className="dg-nav-mobile-footer mt-auto border-t border-cream/10 pt-7">
+              <div className="dg-nav-mobile-footer mt-4 border-t border-cream/10 pt-5 sm:mt-auto sm:pt-7">
                 <Link
                   href="/#cta"
                   onClick={() => setOpen(false)}

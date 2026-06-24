@@ -360,6 +360,13 @@
   }
   .dg-nav-mobile-panel-inner {
     min-height: 0;
+    overflow: hidden;
+  }
+  .dg-nav-mobile-panel[data-open] .dg-nav-mobile-panel-inner {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .dg-nav-mobile-panel[data-open] .dg-nav-mobile-intro {
     animation: dgNavIntroIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
@@ -401,15 +408,25 @@
       display: flex;
       flex-direction: column;
       min-height: 100dvh;
+      max-height: 100dvh;
     }
     nav[data-menu-open] .dg-nav-mobile-panel {
       flex: 1 1 auto;
       min-height: 0;
+      overflow: hidden;
     }
     .dg-nav-mobile-panel[data-open] .dg-nav-mobile-panel-inner {
-      display: flex;
-      min-height: 100%;
-      flex-direction: column;
+      display: block;
+      max-height: 100%;
+    }
+  }
+  @media (max-width: 767px) and (max-height: 700px) {
+    .dg-nav-mobile-intro-desc,
+    .dg-nav-mobile-link-hint {
+      display: none;
+    }
+    .dg-nav-mobile-link {
+      padding-block: 0.75rem;
     }
   }
 

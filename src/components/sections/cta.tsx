@@ -59,7 +59,7 @@ export function Cta() {
           <div
             data-reveal
             style={reveal(0.2)}
-            className="mt-[38px] flex flex-wrap items-center gap-5"
+            className="mt-[38px] flex w-full flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:items-center min-[420px]:gap-5"
           >
             <a
               href="#hero"
@@ -97,16 +97,16 @@ export function Cta() {
       </div>
 
       {/* footer — flows after content on mobile, pinned to the section on desktop */}
-      <footer className="z-[4] mt-12 flex w-full flex-wrap items-center justify-between gap-3 border-t border-sage/[0.14] px-5 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:mt-16 sm:px-10 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-6 lg:px-16">
-        <div className="flex items-baseline gap-2.5">
-          <span className="font-serif text-2xl font-bold">
+      <footer className="z-[4] mt-12 flex w-full flex-col items-start gap-3 border-t border-sage/[0.14] px-5 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:mt-16 sm:flex-row sm:items-center sm:justify-between sm:px-10 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:pb-6 lg:px-16">
+        <div className="flex min-w-0 items-baseline gap-2.5">
+          <span className="shrink-0 font-serif text-2xl font-bold">
             {siteConfig.brand.initials}
           </span>
-          <span className="font-serif text-xs uppercase tracking-[0.3em] opacity-80">
+          <span className="min-w-0 truncate font-serif text-xs uppercase tracking-[0.3em] opacity-80">
             {siteConfig.brand.name}
           </span>
         </div>
-        <span className="font-mono text-[11px] text-cream/50">
+        <span className="font-mono text-[10px] leading-relaxed text-cream/50 sm:text-[11px]">
           Finanza strutturata · Cessione del credito · © 2026
         </span>
       </footer>

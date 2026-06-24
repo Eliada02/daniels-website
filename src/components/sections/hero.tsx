@@ -78,7 +78,7 @@ export function Hero() {
           <div
             data-reveal
             style={reveal(0.45)}
-            className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-[18px] sm:gap-y-4 lg:mt-7"
+            className="mt-6 flex w-full flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:items-center sm:mt-8 sm:gap-x-[18px] sm:gap-y-4 lg:mt-7"
           >
             <a
               href="#cta"
