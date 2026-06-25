@@ -1,5 +1,7 @@
-import { reveal } from "@/lib/css";
+import Link from "next/link";
 import { TreasureChest } from "@/components/hero/treasure-chest";
+import { reveal } from "@/lib/css";
+import { siteConfig } from "@/lib/site-config";
 
 const floatChip =
   "absolute z-[3] hidden whitespace-nowrap rounded-full border border-cream/25 bg-cream/[0.08] px-3.5 py-2 font-mono text-[13px] text-sage backdrop-blur-sm xl:block";
@@ -81,18 +83,23 @@ export function Hero() {
             className="mt-6 flex w-full flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:items-center sm:mt-8 sm:gap-x-[18px] sm:gap-y-4 lg:mt-7"
           >
             <a
-              href="#cta"
+              href="#contatto"
               data-breathe
               className="rounded-full bg-cream px-7 py-3.5 text-[14px] font-bold tracking-[0.01em] text-olive no-underline shadow-[0_8px_28px_rgba(0,0,0,0.22)] transition-colors hover:bg-sage sm:px-8 sm:py-4 sm:text-[15px]"
             >
               Prenota una consulenza
             </a>
-            <a
-              href="#problema"
-              className="inline-flex items-center gap-2 rounded-full border border-sage/45 px-5 py-2.5 text-sm font-semibold text-sage no-underline transition-colors hover:bg-sage/10"
+            <Link
+              href={siteConfig.aboutLink.href}
+              prefetch
+              aria-label={siteConfig.aboutLink.hint}
+              className="group inline-flex items-center gap-3 rounded-full border border-sage/45 px-5 py-2.5 text-sm font-semibold text-sage no-underline transition-colors hover:border-sage hover:bg-sage hover:text-olive"
             >
-              Scopri come ↓
-            </a>
+              {siteConfig.aboutLink.label}
+              <span className="grid h-5 w-5 place-items-center rounded-full border border-current/30 font-serif text-sm leading-none transition-transform duration-300 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
           </div>
         </div>
 

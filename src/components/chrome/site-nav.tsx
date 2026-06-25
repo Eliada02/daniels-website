@@ -90,7 +90,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
             </Link>
           ))}
           <Link
-            href="/#cta"
+            href="/#contatto"
             className="ml-3 rounded-full border border-current px-5 py-2.5 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-olive"
           >
             Parliamone
@@ -210,7 +210,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
 
               <div className="dg-nav-mobile-footer mt-4 border-t border-cream/10 pt-5 sm:mt-auto sm:pt-7">
                 <Link
-                  href="/#cta"
+                  href="/#contatto"
                   onClick={() => setOpen(false)}
                   data-breathe
                   style={cssVars({ "--nav-i": siteConfig.nav.length })}

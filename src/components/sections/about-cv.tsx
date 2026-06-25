@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cssVars } from "@/lib/css";
 import {
   aboutCertificazioni,
   aboutCompetenze,
@@ -166,7 +167,10 @@ export function AboutCv() {
   return (
     <div className="mx-auto max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20 lg:py-24">
       {/* ============================ HEADER ============================ */}
-      <header className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+      <header
+        className="dg-rise grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16"
+        style={cssVars({ "--rise-delay": "0.04s" })}
+      >
         {/* profile */}
         <div className="flex flex-col items-start gap-7 sm:flex-row">
           <div className="grid h-28 w-28 shrink-0 place-items-center rounded-full border-2 border-olive bg-white font-serif text-[34px] font-bold tracking-[-0.02em] text-olive shadow-[0_12px_34px_rgba(0,84,166,0.14)] sm:h-32 sm:w-32">
@@ -235,7 +239,10 @@ export function AboutCv() {
       </header>
 
       {/* ============================ TIMELINE ============================ */}
-      <section className="mt-20 lg:mt-28">
+      <section
+        className="dg-rise mt-20 lg:mt-28"
+        style={cssVars({ "--rise-delay": "0.12s" })}
+      >
         <h2 className="flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.24em] text-olive">
           <span className="h-2.5 w-2.5 rounded-[2px] bg-olive" />
           Il mio percorso professionale
@@ -277,7 +284,10 @@ export function AboutCv() {
       </section>
 
       {/* ===================== FORMAZIONE + CERTIFICAZIONI ===================== */}
-      <section className="mt-16 grid grid-cols-1 gap-8 rounded-2xl bg-mist p-8 sm:p-10 md:grid-cols-2 md:gap-12">
+      <section
+        className="dg-rise mt-16 grid grid-cols-1 gap-8 rounded-2xl bg-mist p-8 sm:p-10 md:grid-cols-2 md:gap-12"
+        style={cssVars({ "--rise-delay": "0.2s" })}
+      >
         <div>
           <h2 className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-olive">
             <Icon name="cap" className="h-4 w-4" />
@@ -311,7 +321,10 @@ export function AboutCv() {
       </section>
 
       {/* ============================ STATS ============================ */}
-      <section className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-forest/10 pt-12 md:grid-cols-4">
+      <section
+        className="dg-rise mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-forest/10 pt-12 md:grid-cols-4"
+        style={cssVars({ "--rise-delay": "0.28s" })}
+      >
         {aboutStats.map((s) => (
           <div key={s.label} className="flex items-center gap-3.5">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-olive/10 text-olive">

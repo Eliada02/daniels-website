@@ -132,6 +132,14 @@
   44%, 52% { filter: brightness(1.45); }
 }
 
+/* Route entrance — destination-page blocks rise + fade in on mount. Used by
+   the dedicated /chi-sono route, which has no scroll-reveal engine of its own.
+   Kept outside @theme so the inline animation name resolves in emitted CSS. */
+@keyframes dgPageIn {
+  from { opacity: 0; transform: translateY(22px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
 /* Configurable brand props (mirror the original DC component props).
    Override --accent-warm on :root to retheme the warm accent globally. */
 :root {
@@ -253,6 +261,14 @@
   [data-reveal][data-shown] {
     opacity: 1;
     transform: translateY(0) var(--tilt-base, );
+  }
+
+  /* Route-entrance reveal — runs once on mount, staggered via --rise-delay.
+     Drives the smooth transition into the /chi-sono route. */
+  .dg-rise {
+    animation: dgPageIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: var(--rise-delay, 0s);
+    will-change: opacity, transform;
   }
 
   /* Hero treasure chest — declarative data-anim hooks wired here. */
@@ -435,6 +451,9 @@
       opacity: 1 !important;
       transform: var(--tilt-base, none) !important;
       transition: none !important;
+    }
+    .dg-rise {
+      animation: none !important;
     }
     html {
       scroll-behavior: auto;

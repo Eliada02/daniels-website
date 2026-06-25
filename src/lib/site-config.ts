@@ -15,14 +15,24 @@ export const siteConfig = {
     initials: "DG",
     name: "Daniele Di Giorgio",
     tagline: "Finanza strutturata · Cessione del credito",
+    contactEmail: "daniele@example.com",
+    contactPhone: "+39 000 000 0000",
+    contactPhoneHref: "tel:+390000000000",
   },
 
   nav: [
-    { href: "/chi-sono", label: "Chi sono", hint: "Percorso e competenze" },
     { href: "/#problema", label: "Il problema", hint: "Liquidità bloccata" },
     { href: "/#soluzione", label: "La soluzione", hint: "Cessione pro-soluto" },
     { href: "/#metodo", label: "Il metodo", hint: "Quattro passi chiari" },
   ] as const,
+
+  /** Closing link to the dedicated "Chi sono" résumé route. */
+  aboutLink: {
+    href: "/chi-sono",
+    kicker: "Dietro la struttura",
+    label: "Scopri chi sono",
+    hint: "Percorso, competenze e numeri di Daniele Di Giorgio.",
+  },
 
   barometerLabel: "Consapevolezza finanziaria",
 
@@ -238,6 +248,42 @@ export const ctaBenefits = [
   "Un interlocutore umano, dall'inizio alla fine",
 ];
 
+export const contactForm = {
+  kicker: "Richiesta",
+  title: "Scrivimi",
+  intro:
+    "Compila il modulo: ti rispondo entro un giorno lavorativo. Nessun impegno, solo chiarezza.",
+  submit: "Invia richiesta",
+  submitting: "Invio in corso…",
+  success: {
+    title: "Messaggio inviato",
+    body: "Grazie per avermi scritto. Ti risponderò entro 24 ore lavorative.",
+  },
+  error:
+    "Non sono riuscito a inviare il messaggio. Riprova tra poco o contattami su WhatsApp.",
+  privacy: "I tuoi dati sono usati solo per rispondere alla richiesta.",
+  whatsapp: {
+    label: "oppure scrivimi su WhatsApp →",
+    /** wa.me expects digits only (no + or spaces). */
+    wa: "3900000000000",
+    preset: "Ciao Daniele, vorrei una consulenza sulla cessione del credito.",
+  },
+  fields: {
+    name: { label: "Nome e cognome", placeholder: "Mario Rossi" },
+    email: { label: "Email", placeholder: "mario@azienda.it" },
+    phone: {
+      label: "Telefono",
+      placeholder: "+39 333 000 0000",
+      hint: "Opzionale",
+    },
+    message: {
+      label: "Messaggio",
+      placeholder:
+        "Descrivi brevemente la tua situazione e i crediti da strutturare…",
+    },
+  },
+} as const;
+
 /* ============================================================
    "Chi sono" — dedicated CV / timeline route (/chi-sono).
    Infographic résumé layout; primary accent is #0054A6 (the
@@ -267,8 +313,8 @@ export const aboutHero = {
     "Aiuto aziende e professionisti a trasformare i crediti commerciali bloccati in liquidità prevedibile — con strutture su misura, trasparenti e orientate ai risultati.",
   /** Contact row; icon keys map onto the inline icon set. */
   contact: [
-    { icon: "mail" as CvIcon, value: "daniele@example.com", href: "mailto:daniele@example.com" },
-    { icon: "phone" as CvIcon, value: "+39 000 000 0000", href: "tel:+390000000000" },
+    { icon: "mail" as CvIcon, value: siteConfig.brand.contactEmail, href: `mailto:${siteConfig.brand.contactEmail}` },
+    { icon: "phone" as CvIcon, value: siteConfig.brand.contactPhone, href: siteConfig.brand.contactPhoneHref },
     { icon: "pin" as CvIcon, value: "Milano, Italia", href: null },
     { icon: "globe" as CvIcon, value: "danieledigiorgio.it", href: "https://danieledigiorgio.it" },
   ],
