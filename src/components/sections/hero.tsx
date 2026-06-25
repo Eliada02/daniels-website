@@ -10,6 +10,9 @@ const chips = [
   { text: "+ liquidità, − debito", pos: "right-[4%] top-[16%]", px: "0.65", anim: "dgFloat 8s ease-in-out infinite .4s" },
 ];
 
+const heroCtaClass =
+  "rounded-full bg-cream px-8 py-3.5 text-center text-[15px] font-bold tracking-[0.01em] text-olive no-underline shadow-[0_8px_28px_rgba(0,0,0,0.22)] transition-colors hover:bg-sage";
+
 export function Hero() {
   return (
     <section
@@ -18,12 +21,6 @@ export function Hero() {
       className="relative isolate flex min-h-[100dvh] flex-col bg-olive text-cream"
     >
       <canvas data-particles="hero" className="absolute inset-0 z-[1] h-full w-full" />
-
-      {/* Soft hand-off into the cream pain-points section below */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-[clamp(72px,16vh,180px)] bg-gradient-to-b from-transparent via-olive/20 to-cream"
-      />
 
       <div
         data-px="0.12"
@@ -82,13 +79,9 @@ export function Hero() {
             <div
               data-reveal
               style={reveal(0.45)}
-              className="mt-1 flex w-full flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:items-center"
+              className="mt-1 hidden w-full flex-col items-stretch gap-3 lg:flex lg:flex-row lg:flex-wrap lg:items-center"
             >
-              <a
-                href="#contatto"
-                data-breathe
-                className="rounded-full bg-cream px-8 py-3.5 text-[15px] font-bold tracking-[0.01em] text-olive no-underline shadow-[0_8px_28px_rgba(0,0,0,0.22)] transition-colors hover:bg-sage"
-              >
+              <a href="#contatto" data-breathe className={heroCtaClass}>
                 Prenota una consulenza
               </a>
             </div>
@@ -108,6 +101,15 @@ export function Hero() {
               <span className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.28em] text-sage/55">
                 Capitale sbloccato
               </span>
+            </div>
+            <div
+              data-reveal
+              style={reveal(0.5)}
+              className="mt-5 flex w-full flex-col items-stretch sm:mt-6 lg:hidden"
+            >
+              <a href="#contatto" data-breathe className={heroCtaClass}>
+                Prenota una consulenza
+              </a>
             </div>
           </div>
         </div>
