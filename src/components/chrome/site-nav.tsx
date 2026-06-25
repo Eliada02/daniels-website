@@ -90,8 +90,16 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
             </Link>
           ))}
           <Link
+            href={siteConfig.aboutLink.href}
+            prefetch
+            aria-label={siteConfig.aboutLink.hint}
+            className="ml-1 rounded-full border border-current/40 px-4 py-2.5 text-[13px] font-semibold tracking-[0.01em] no-underline opacity-90 transition-colors duration-300 hover:border-sage hover:bg-sage/10 hover:opacity-100"
+          >
+            {siteConfig.aboutLink.label}
+          </Link>
+          <Link
             href="/#contatto"
-            className="ml-3 rounded-full border border-current px-5 py-2.5 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-olive"
+            className="ml-2 rounded-full border border-current px-5 py-2.5 text-[13px] font-bold tracking-[0.02em] no-underline transition-colors duration-300 hover:border-sage hover:bg-sage hover:text-olive"
           >
             Parliamone
           </Link>
@@ -206,6 +214,33 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
                     </div>
                   </Link>
                 ))}
+                <Link
+                  href={siteConfig.aboutLink.href}
+                  prefetch
+                  onClick={() => setOpen(false)}
+                  style={cssVars({ "--nav-i": siteConfig.nav.length })}
+                  className="dg-nav-mobile-link group relative block border-b border-cream/[0.08] py-3.5 no-underline transition-colors active:bg-cream/[0.04] sm:py-5"
+                >
+                  <div className="flex items-center justify-between gap-3 pr-0.5 sm:items-start sm:gap-4 sm:pr-1">
+                    <div className="min-w-0 flex-1">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-sage/55">
+                        {siteConfig.aboutLink.kicker}
+                      </span>
+                      <span className="mt-1.5 block font-serif text-[clamp(22px,6vw,40px)] font-semibold leading-[1.05] tracking-[-0.02em] sm:mt-2 sm:leading-[1.02]">
+                        {siteConfig.aboutLink.label}
+                      </span>
+                      <span className="dg-nav-mobile-link-hint mt-1.5 block text-[12.5px] leading-snug text-cream/45 sm:mt-2 sm:text-[13px]">
+                        {siteConfig.aboutLink.hint}
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-cream/12 bg-cream/[0.04] text-sm text-sage/70 transition-all duration-300 group-active:border-sage/35 group-active:bg-sage/10 group-active:text-sage sm:mt-5 sm:h-10 sm:w-10"
+                    >
+                      →
+                    </span>
+                  </div>
+                </Link>
               </nav>
 
               <div className="dg-nav-mobile-footer mt-4 border-t border-cream/10 pt-5 sm:mt-auto sm:pt-7">
@@ -213,7 +248,7 @@ export function SiteNav({ solid = false }: { solid?: boolean } = {}) {
                   href="/#contatto"
                   onClick={() => setOpen(false)}
                   data-breathe
-                  style={cssVars({ "--nav-i": siteConfig.nav.length })}
+                  style={cssVars({ "--nav-i": siteConfig.nav.length + 1 })}
                   className="dg-nav-mobile-cta flex w-full items-center justify-between gap-4 rounded-full border border-sage/40 bg-sage px-5 py-4 text-[14px] font-bold tracking-[0.02em] text-forest no-underline shadow-[0_12px_36px_rgba(126,200,255,0.32)] transition-transform duration-300 active:scale-[0.98]"
                 >
                   <span>Parliamone</span>
